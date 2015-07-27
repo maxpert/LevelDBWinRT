@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <ItemsProjectGuid>{1f618399-56d0-41d2-b695-0096b0385a10}</ItemsProjectGuid>
+    <ItemsRootNamespace>LevelDBWinRT</ItemsRootNamespace>
+    <ItemsProjectName>LevelDBWinRT.Shared</ItemsProjectName>
+    <CodeSharingProject>248F659F-DAC5-46E8-AC09-60EC9FC95053</CodeSharingProject>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectCapability Include="SourceItemsFromImports" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)DB.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)db\builder.cc" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)db\dbformat.cc" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)db\db_impl.cc" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)db\db_iter.cc" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)db\dumpfile.cc" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)db\filename.cc" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)db\log_reader.cc" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)db\log_writer.cc" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)db\memtable.cc" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)db\repair.cc" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)db\table_cache.cc" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)db\version_edit.cc" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)db\version_set.cc" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)db\write_batch.cc" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)helpers\memenv\memenv.cc" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)port\port_win.cc" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Slice.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)table\block.cc" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)table\block_builder.cc" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)table\filter_block.cc" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)table\format.cc" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)table\iterator.cc" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)table\merger.cc" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)table\table.cc" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)table\table_builder.cc" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)table\two_level_iterator.cc" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Utils.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)util\arena.cc" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)util\bloom.cc" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)util\cache.cc" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)util\coding.cc" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)util\comparator.cc" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)util\crc32c.cc" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)util\env.cc" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)util\env_windows.cc" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)util\filter_policy.cc" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)util\hash.cc" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)util\histogram.cc" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)util\logging.cc" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)util\options.cc" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)util\status.cc" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)util\win_logger.cc" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)WriteOptions.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)DB.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)db\builder.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)db\dbformat.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)db\db_impl.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)db\db_iter.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)db\filename.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)db\log_format.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)db\log_reader.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)db\log_writer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)db\memtable.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)db\skiplist.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)db\snapshot.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)db\table_cache.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)db\version_edit.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)db\version_set.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)db\write_batch_internal.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)helpers\memenv\memenv.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)leveldb\c.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)leveldb\cache.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)leveldb\comparator.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)leveldb\db.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)leveldb\dumpfile.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)leveldb\env.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)leveldb\filter_policy.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)leveldb\iterator.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)leveldb\options.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)leveldb\slice.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)leveldb\status.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)leveldb\table.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)leveldb\table_builder.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)leveldb\write_batch.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)port\atomic_pointer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)port\port.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)port\port_example.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)port\port_posix.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)port\port_win.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)port\thread_annotations.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)port\win\stdint.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Slice.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)table\block.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)table\block_builder.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)table\filter_block.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)table\format.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)table\iterator_wrapper.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)table\merger.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)table\two_level_iterator.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utils.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)util\arena.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)util\coding.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)util\crc32c.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)util\hash.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)util\histogram.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)util\logging.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)util\mutexlock.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)util\posix_logger.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)util\random.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)util\win_logger.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)WriteOptions.h" />
+  </ItemGroup>
+</Project>

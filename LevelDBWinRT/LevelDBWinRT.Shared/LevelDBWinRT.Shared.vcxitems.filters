@@ -1,0 +1,336 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="leveldb">
+      <UniqueIdentifier>{3cacafdd-2929-4008-93e8-ee1c7a695eea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="helpers">
+      <UniqueIdentifier>{4c2de89e-b31f-44d8-a16a-45785fe44779}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="util">
+      <UniqueIdentifier>{8938625e-774c-4995-9515-3142db6e479a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="port">
+      <UniqueIdentifier>{7d382ba5-c09b-400d-892f-c3f4ea333341}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="table">
+      <UniqueIdentifier>{8e77fb60-c697-4bc0-bcb9-b54af09cc6b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="db">
+      <UniqueIdentifier>{c11decde-3c68-45e1-90bb-d278282cf731}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="wrapper">
+      <UniqueIdentifier>{c0b220cf-f7d9-4920-a5fb-b7531d7332d7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)db\builder.cc">
+      <Filter>db</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)db\dbformat.cc">
+      <Filter>db</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)db\db_impl.cc">
+      <Filter>db</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)db\db_iter.cc">
+      <Filter>db</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)db\dumpfile.cc">
+      <Filter>db</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)db\filename.cc">
+      <Filter>db</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)db\log_reader.cc">
+      <Filter>db</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)db\log_writer.cc">
+      <Filter>db</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)db\memtable.cc">
+      <Filter>db</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)db\repair.cc">
+      <Filter>db</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)db\table_cache.cc">
+      <Filter>db</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)db\version_edit.cc">
+      <Filter>db</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)db\version_set.cc">
+      <Filter>db</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)db\write_batch.cc">
+      <Filter>db</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)helpers\memenv\memenv.cc">
+      <Filter>helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)table\block.cc">
+      <Filter>table</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)table\block_builder.cc">
+      <Filter>table</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)table\filter_block.cc">
+      <Filter>table</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)table\format.cc">
+      <Filter>table</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)table\iterator.cc">
+      <Filter>table</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)table\merger.cc">
+      <Filter>table</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)table\table.cc">
+      <Filter>table</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)table\table_builder.cc">
+      <Filter>table</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)table\two_level_iterator.cc">
+      <Filter>table</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)port\port_win.cc">
+      <Filter>port</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)util\arena.cc">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)util\bloom.cc">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)util\cache.cc">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)util\coding.cc">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)util\comparator.cc">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)util\crc32c.cc">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)util\env.cc">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)util\env_windows.cc">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)util\filter_policy.cc">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)util\hash.cc">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)util\histogram.cc">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)util\logging.cc">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)util\options.cc">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)util\status.cc">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)util\win_logger.cc">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Utils.cpp">
+      <Filter>wrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)DB.cpp">
+      <Filter>wrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Slice.cpp">
+      <Filter>wrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)WriteOptions.cpp">
+      <Filter>wrapper</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)db\builder.h">
+      <Filter>db</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)db\dbformat.h">
+      <Filter>db</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)db\db_impl.h">
+      <Filter>db</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)db\db_iter.h">
+      <Filter>db</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)db\filename.h">
+      <Filter>db</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)db\log_format.h">
+      <Filter>db</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)db\log_reader.h">
+      <Filter>db</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)db\log_writer.h">
+      <Filter>db</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)db\memtable.h">
+      <Filter>db</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)db\skiplist.h">
+      <Filter>db</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)db\snapshot.h">
+      <Filter>db</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)db\table_cache.h">
+      <Filter>db</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)db\version_edit.h">
+      <Filter>db</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)db\version_set.h">
+      <Filter>db</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)db\write_batch_internal.h">
+      <Filter>db</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)helpers\memenv\memenv.h">
+      <Filter>helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)leveldb\c.h">
+      <Filter>leveldb</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)leveldb\cache.h">
+      <Filter>leveldb</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)leveldb\comparator.h">
+      <Filter>leveldb</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)leveldb\db.h">
+      <Filter>leveldb</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)leveldb\dumpfile.h">
+      <Filter>leveldb</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)leveldb\env.h">
+      <Filter>leveldb</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)leveldb\filter_policy.h">
+      <Filter>leveldb</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)leveldb\iterator.h">
+      <Filter>leveldb</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)leveldb\options.h">
+      <Filter>leveldb</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)leveldb\slice.h">
+      <Filter>leveldb</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)leveldb\status.h">
+      <Filter>leveldb</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)leveldb\table.h">
+      <Filter>leveldb</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)leveldb\table_builder.h">
+      <Filter>leveldb</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)leveldb\write_batch.h">
+      <Filter>leveldb</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)table\block.h">
+      <Filter>table</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)table\block_builder.h">
+      <Filter>table</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)table\filter_block.h">
+      <Filter>table</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)table\format.h">
+      <Filter>table</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)table\iterator_wrapper.h">
+      <Filter>table</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)table\merger.h">
+      <Filter>table</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)table\two_level_iterator.h">
+      <Filter>table</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)port\atomic_pointer.h">
+      <Filter>port</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)port\port.h">
+      <Filter>port</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)port\port_example.h">
+      <Filter>port</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)port\port_posix.h">
+      <Filter>port</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)port\port_win.h">
+      <Filter>port</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)port\thread_annotations.h">
+      <Filter>port</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)port\win\stdint.h">
+      <Filter>port</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)util\arena.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)util\coding.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)util\crc32c.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)util\hash.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)util\histogram.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)util\logging.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)util\mutexlock.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)util\posix_logger.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)util\random.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)util\win_logger.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utils.h">
+      <Filter>wrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)DB.h">
+      <Filter>wrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Slice.h">
+      <Filter>wrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)WriteOptions.h">
+      <Filter>wrapper</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
