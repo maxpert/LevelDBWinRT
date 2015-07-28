@@ -267,7 +267,7 @@ namespace leveldb {
 				HANDLE dir;
 				WIN32_FIND_DATA file_data;
 				std::string p(directory + "\\*");
-				
+
 				if ((dir = ::FindFirstFileEx(s2ws(p).c_str(), FindExInfoStandard, &file_data, FindExSearchNameMatch, NULL, FIND_FIRST_EX_CASE_SENSITIVE)) == INVALID_HANDLE_VALUE)
 				{
 					return Status::IOError("Unable to open directory " + directory);
@@ -305,7 +305,7 @@ namespace leveldb {
 				if (::CreateDirectory(s2ws(name).c_str(), NULL) != 0) {
 					return Status::OK();
 				}
-				
+
 				auto lastError = GetLastError();
 				if (lastError == ERROR_ALREADY_EXISTS) {
 					return Status::OK();
@@ -330,15 +330,15 @@ namespace leveldb {
 			}
 
 			virtual Status RenameFile(const std::string& src, const std::string& target) {
-				
+
 				auto movres = ::MoveFileEx(
-									s2ws(src).c_str(), 
-									s2ws(target).c_str(), 
-									MOVEFILE_COPY_ALLOWED | MOVEFILE_REPLACE_EXISTING | MOVEFILE_WRITE_THROUGH);
+					s2ws(src).c_str(),
+					s2ws(target).c_str(),
+					MOVEFILE_COPY_ALLOWED | MOVEFILE_REPLACE_EXISTING | MOVEFILE_WRITE_THROUGH);
 				if (movres != 0) {
 					return Status::OK();
 				}
-				
+
 				return Status::IOError("Unable to move file");
 			}
 

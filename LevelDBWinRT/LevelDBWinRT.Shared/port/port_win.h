@@ -41,112 +41,116 @@
 
 
 namespace leveldb {
-namespace port {
+	namespace port {
 
-	std::wstring s2ws(const std::string& str);
-	std::string ws2s(const std::wstring& wstr);
+		std::wstring s2ws(const std::string& str);
+		std::string ws2s(const std::wstring& wstr);
 
-// Windows is little endian (for now :p)
-static const bool kLittleEndian = true;
+		static const union {
+			uint32_t i;
+			char c[4];
+		} kEndianVar = { 0x01020304 };
 
-class CondVar;
+		static const bool kLittleEndian = kEndianVar.c[0] == 1;
 
-class Mutex {
- public:
-  Mutex();
-  ~Mutex();
+		class CondVar;
 
-  void Lock();
-  void Unlock();
-  void AssertHeld();
+		class Mutex {
+		public:
+			Mutex();
+			~Mutex();
 
- private:
-  friend class CondVar;
-  // critical sections are more efficient than mutexes
-  // but they are not recursive and can only be used to synchronize threads within the same process
-  // we use opaque void * to avoid including windows.h in port_win.h
-  void * cs_;
+			void Lock();
+			void Unlock();
+			void AssertHeld();
 
-  // No copying
-  Mutex(const Mutex&);
-  void operator=(const Mutex&);
-};
+		private:
+			friend class CondVar;
+			// critical sections are more efficient than mutexes
+			// but they are not recursive and can only be used to synchronize threads within the same process
+			// we use opaque void * to avoid including windows.h in port_win.h
+			void * cs_;
 
-// the Win32 API offers a dependable condition variable mechanism, but only starting with
-// Windows 2008 and Vista
-// no matter what we will implement our own condition variable with a semaphore
-// implementation as described in a paper written by Andrew D. Birrell in 2003
-class CondVar {
- public:
-  explicit CondVar(Mutex* mu);
-  ~CondVar();
-  void Wait();
-  void Signal();
-  void SignalAll();
- private:
-  Mutex* mu_;
-  
-  Mutex wait_mtx_;
-  long waiting_;
-  
-  void * sem1_;
-  void * sem2_;
-  
-  
-};
+			// No copying
+			Mutex(const Mutex&);
+			void operator=(const Mutex&);
+		};
 
-// Storage for a lock-free pointer
-class AtomicPointer {
- private:
-  void * rep_;
- public:
-  AtomicPointer() : rep_(nullptr) { }
-  explicit AtomicPointer(void* v); 
-  void* Acquire_Load() const;
+		// the Win32 API offers a dependable condition variable mechanism, but only starting with
+		// Windows 2008 and Vista
+		// no matter what we will implement our own condition variable with a semaphore
+		// implementation as described in a paper written by Andrew D. Birrell in 2003
+		class CondVar {
+		public:
+			explicit CondVar(Mutex* mu);
+			~CondVar();
+			void Wait();
+			void Signal();
+			void SignalAll();
+		private:
+			Mutex* mu_;
 
-  void Release_Store(void* v);
+			Mutex wait_mtx_;
+			long waiting_;
 
-  void* NoBarrier_Load() const;
+			void * sem1_;
+			void * sem2_;
 
-  void NoBarrier_Store(void* v);
-};
 
-inline bool Snappy_Compress(const char* input, size_t length,
-                            ::std::string* output) {
+		};
+
+		// Storage for a lock-free pointer
+		class AtomicPointer {
+		private:
+			void * rep_;
+		public:
+			AtomicPointer() : rep_(nullptr) { }
+			explicit AtomicPointer(void* v);
+			void* Acquire_Load() const;
+
+			void Release_Store(void* v);
+
+			void* NoBarrier_Load() const;
+
+			void NoBarrier_Store(void* v);
+		};
+
+		inline bool Snappy_Compress(const char* input, size_t length,
+			::std::string* output) {
 #ifdef SNAPPY
-  output->resize(snappy::MaxCompressedLength(length));
-  size_t outlen;
-  snappy::RawCompress(input, length, &(*output)[0], &outlen);
-  output->resize(outlen);
-  return true;
+			output->resize(snappy::MaxCompressedLength(length));
+			size_t outlen;
+			snappy::RawCompress(input, length, &(*output)[0], &outlen);
+			output->resize(outlen);
+			return true;
 #endif
 
-  return false;
-}
+			return false;
+		}
 
-inline bool Snappy_GetUncompressedLength(const char* input, size_t length,
-                                         size_t* result) {
+		inline bool Snappy_GetUncompressedLength(const char* input, size_t length,
+			size_t* result) {
 #ifdef SNAPPY
-  return snappy::GetUncompressedLength(input, length, result);
+			return snappy::GetUncompressedLength(input, length, result);
 #else
-  return false;
+			return false;
 #endif
-}
+		}
 
-inline bool Snappy_Uncompress(const char* input, size_t length,
-                              char* output) {
+		inline bool Snappy_Uncompress(const char* input, size_t length,
+			char* output) {
 #ifdef SNAPPY
-  return snappy::RawUncompress(input, length, output);
+			return snappy::RawUncompress(input, length, output);
 #else
-  return false;
+			return false;
 #endif
-}
+		}
 
-inline bool GetHeapProfile(void (*func)(void*, const char*, int), void* arg) {
-  return false;
-}
+		inline bool GetHeapProfile(void(*func)(void*, const char*, int), void* arg) {
+			return false;
+		}
 
-}
+	}
 }
 
 #endif  // STORAGE_LEVELDB_PORT_PORT_WIN_H_

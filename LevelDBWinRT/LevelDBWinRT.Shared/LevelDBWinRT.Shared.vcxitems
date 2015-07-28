@@ -80,6 +80,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)db\version_set.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)db\write_batch_internal.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)helpers\memenv\memenv.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)LevelDB-Iterator.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)leveldb\c.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)leveldb\cache.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)leveldb\comparator.h" />

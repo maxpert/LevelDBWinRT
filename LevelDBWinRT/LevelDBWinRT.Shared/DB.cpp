@@ -1,5 +1,6 @@
 #include "DB.h"
 #include "Utils.h"
+#include "port\port.h"
 
 namespace LevelDBWinRT {
 	DB::DB(String^ path) {
@@ -7,7 +8,7 @@ namespace LevelDBWinRT {
 		opts.create_if_missing = true;
 		leveldb::Status status = leveldb::DB::Open(opts, Utils::FromPlatformString(path), &this->db);
 		if (!status.ok()) {
-			throw ref new COMException(1);
+			throw Utils::ExceptionFromStatus(0, status);
 		}
 	}
 
@@ -20,5 +21,30 @@ namespace LevelDBWinRT {
 
 	bool DB::Put(WriteOptions^ writeOptions, Slice^ key, Slice^ value) {
 		return this->db->Put(writeOptions->ToLevelDBOptions(), key->ToLevelDBSlice(), value->ToLevelDBSlice()).ok();
+	}
+
+	Slice^ DB::Get(Slice^ key) {
+		std::string str;
+
+		leveldb::Iterator* itr = this->db->NewIterator(leveldb::ReadOptions());
+
+		if (itr == NULL) {
+			return nullptr;
+		}
+
+		Slice^ valueSlice = nullptr;
+		itr->Seek(key->ToLevelDBSlice());
+
+		if (itr->Valid()) {
+			leveldb::Slice s = itr->value();
+			valueSlice = ref new Slice(s);
+		}
+
+		delete itr;
+		return valueSlice;
+	}
+
+	Iterator^ DB::NewIterator() {
+		return ref new Iterator(this->db->NewIterator(leveldb::ReadOptions()));
 	}
 }

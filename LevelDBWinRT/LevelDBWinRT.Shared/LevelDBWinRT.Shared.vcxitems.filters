@@ -16,11 +16,11 @@
     <Filter Include="table">
       <UniqueIdentifier>{8e77fb60-c697-4bc0-bcb9-b54af09cc6b4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="db">
-      <UniqueIdentifier>{c11decde-3c68-45e1-90bb-d278282cf731}</UniqueIdentifier>
-    </Filter>
     <Filter Include="wrapper">
       <UniqueIdentifier>{c0b220cf-f7d9-4920-a5fb-b7531d7332d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="db">
+      <UniqueIdentifier>{c11decde-3c68-45e1-90bb-d278282cf731}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -330,6 +330,9 @@
       <Filter>wrapper</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)WriteOptions.h">
+      <Filter>wrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)LevelDB-Iterator.h">
       <Filter>wrapper</Filter>
     </ClInclude>
   </ItemGroup>

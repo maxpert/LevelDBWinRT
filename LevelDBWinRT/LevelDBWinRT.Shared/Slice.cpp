@@ -30,6 +30,16 @@ namespace LevelDBWinRT {
 		return ret;
 	}
 
+	Array<uint8>^ Slice::ToByteArray() {
+		return this->buffer;
+	}
+
+	String^ Slice::AsString() {
+		Array<wchar_t>^ c = ref new Array<wchar_t>(this->buffer->Length);
+		memcpy_s(c->Data, c->Length, this->buffer->Data, c->Length);
+		return ref new String(c->Data);
+	}
+
 	Slice^ Slice::FromString(String^ s) {
 		return ref new Slice(s);
 	}

@@ -2,6 +2,7 @@
 
 #include "leveldb\db.h"
 #include "Slice.h"
+#include "LevelDB-Iterator.h"
 #include "WriteOptions.h"
 #include <Windows.h>
 
@@ -16,7 +17,9 @@ namespace LevelDBWinRT {
 		DB(String^ path);
 		virtual ~DB();
 
-		bool DB::Put(WriteOptions^ writeopts, Slice^ key, Slice^ value);
+		bool Put(WriteOptions^ writeopts, Slice^ key, Slice^ value);
+		Slice^ Get(Slice^ key);
+		Iterator^ NewIterator();
 	};
 }
 
