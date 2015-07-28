@@ -276,16 +276,17 @@ namespace leveldb {
 				do {
 					std::wstring ws(file_data.cFileName);
 					std::string file_name = ws2s(ws);
-					const std::string full_file_name = directory + "\\" + file_name;
-					const bool is_directory = (file_data.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) != 0;
 
 					if (file_name[0] == '.')
 						continue;
 
+					const std::string full_file_name = directory + "/" + file_name;
+					const bool is_directory = (file_data.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) != 0;
+
 					if (is_directory)
 						continue;
 
-					result->push_back(full_file_name);
+					result->push_back(file_name);
 				} while (::FindNextFile(dir, &file_data));
 
 				::FindClose(dir);

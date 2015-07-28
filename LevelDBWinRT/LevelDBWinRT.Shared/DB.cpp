@@ -7,6 +7,7 @@ namespace LevelDBWinRT {
 		leveldb::Options opts;
 		opts.create_if_missing = true;
 		leveldb::Status status = leveldb::DB::Open(opts, Utils::FromPlatformString(path), &this->db);
+
 		if (!status.ok()) {
 			throw Utils::ExceptionFromStatus(0, status);
 		}
@@ -23,8 +24,8 @@ namespace LevelDBWinRT {
 		return this->db->Put(writeOptions->ToLevelDBOptions(), key->ToLevelDBSlice(), value->ToLevelDBSlice()).ok();
 	}
 
-	bool DB::Delete(WriteOptions^ writeopts, Slice^ key) {
-		return this->db->Delete(writeopts->ToLevelDBOptions(), key->ToLevelDBSlice()).ok();
+	bool DB::Delete(WriteOptions^ writeOptions, Slice^ key) {
+		return this->db->Delete(writeOptions->ToLevelDBOptions(), key->ToLevelDBSlice()).ok();
 	}
 
 	Slice^ DB::Get(ReadOptions^ readOptions, Slice^ key) {

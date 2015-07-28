@@ -56,7 +56,7 @@ namespace leveldb {
 			cs_(nullptr) {
 			assert(!cs_);
 			cs_ = static_cast<void *>(new CRITICAL_SECTION());
-			::InitializeCriticalSectionEx(static_cast<CRITICAL_SECTION *>(cs_), 1, 0);
+			::InitializeCriticalSectionEx(static_cast<CRITICAL_SECTION *>(cs_), 0, 0);
 			assert(cs_);
 		}
 
