@@ -60,7 +60,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)util\options.cc" />
     <ClCompile Include="$(MSBuildThisFileDirectory)util\status.cc" />
     <ClCompile Include="$(MSBuildThisFileDirectory)util\win_logger.cc" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)WriteOptions.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)DB.h" />
@@ -81,6 +80,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)db\write_batch_internal.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)helpers\memenv\memenv.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)LevelDB-Iterator.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)LevelDB-Commons.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)leveldb\c.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)leveldb\cache.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)leveldb\comparator.h" />
@@ -121,6 +121,5 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)util\posix_logger.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)util\random.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)util\win_logger.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)WriteOptions.h" />
   </ItemGroup>
 </Project>

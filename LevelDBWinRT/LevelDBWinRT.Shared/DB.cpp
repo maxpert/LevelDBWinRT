@@ -23,10 +23,12 @@ namespace LevelDBWinRT {
 		return this->db->Put(writeOptions->ToLevelDBOptions(), key->ToLevelDBSlice(), value->ToLevelDBSlice()).ok();
 	}
 
-	Slice^ DB::Get(Slice^ key) {
-		std::string str;
+	bool DB::Delete(WriteOptions^ writeopts, Slice^ key) {
+		return this->db->Delete(writeopts->ToLevelDBOptions(), key->ToLevelDBSlice()).ok();
+	}
 
-		leveldb::Iterator* itr = this->db->NewIterator(leveldb::ReadOptions());
+	Slice^ DB::Get(ReadOptions^ readOptions, Slice^ key) {
+		leveldb::Iterator* itr = this->db->NewIterator(readOptions->ToLevelDBOptions());
 
 		if (itr == NULL) {
 			return nullptr;
@@ -44,7 +46,20 @@ namespace LevelDBWinRT {
 		return valueSlice;
 	}
 
-	Iterator^ DB::NewIterator() {
-		return ref new Iterator(this->db->NewIterator(leveldb::ReadOptions()));
+	Iterator^ DB::NewIterator(ReadOptions^ opts) {
+		return ref new Iterator(
+			this->db->NewIterator(opts->ToLevelDBOptions())
+		);
 	}
+
+	Snapshot^ DB::GetSnapshot() {
+		return ref new Snapshot(
+			this->db->GetSnapshot()
+		);
+	}
+
+	void DB::ReleaseSnapshot(Snapshot^ s) {
+		this->db->ReleaseSnapshot(s->snapshot);
+	}
+
 }

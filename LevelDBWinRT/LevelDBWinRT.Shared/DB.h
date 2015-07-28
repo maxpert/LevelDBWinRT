@@ -3,7 +3,7 @@
 #include "leveldb\db.h"
 #include "Slice.h"
 #include "LevelDB-Iterator.h"
-#include "WriteOptions.h"
+#include "LevelDB-Commons.h"
 #include <Windows.h>
 
 namespace LevelDBWinRT {
@@ -17,9 +17,13 @@ namespace LevelDBWinRT {
 		DB(String^ path);
 		virtual ~DB();
 
-		bool Put(WriteOptions^ writeopts, Slice^ key, Slice^ value);
-		Slice^ Get(Slice^ key);
-		Iterator^ NewIterator();
+		bool Put(WriteOptions^ writeOptions, Slice^ key, Slice^ value);
+		bool Delete(WriteOptions^ writeOptions, Slice^ key);
+		Slice^ Get(ReadOptions^ readOptions, Slice^ key);
+
+		Iterator^ NewIterator(ReadOptions ^readOptions);
+		Snapshot^ GetSnapshot();
+		void ReleaseSnapshot(Snapshot^ snapshot);
 	};
 }
 

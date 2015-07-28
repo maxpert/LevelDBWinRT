@@ -153,9 +153,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Slice.cpp">
       <Filter>wrapper</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)WriteOptions.cpp">
-      <Filter>wrapper</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)db\builder.h">
@@ -329,10 +326,10 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Slice.h">
       <Filter>wrapper</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)WriteOptions.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)LevelDB-Iterator.h">
       <Filter>wrapper</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)LevelDB-Iterator.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)LevelDB-Commons.h">
       <Filter>wrapper</Filter>
     </ClInclude>
   </ItemGroup>
