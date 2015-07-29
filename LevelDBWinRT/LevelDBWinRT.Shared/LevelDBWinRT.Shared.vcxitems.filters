@@ -153,6 +153,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Slice.cpp">
       <Filter>wrapper</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)WriteBatch.cpp">
+      <Filter>wrapper</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)db\builder.h">
@@ -330,6 +333,9 @@
       <Filter>wrapper</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)LevelDB-Commons.h">
+      <Filter>wrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)WriteBatch.h">
       <Filter>wrapper</Filter>
     </ClInclude>
   </ItemGroup>

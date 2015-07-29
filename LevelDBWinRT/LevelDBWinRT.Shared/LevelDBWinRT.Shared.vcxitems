@@ -60,6 +60,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)util\options.cc" />
     <ClCompile Include="$(MSBuildThisFileDirectory)util\status.cc" />
     <ClCompile Include="$(MSBuildThisFileDirectory)util\win_logger.cc" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)WriteBatch.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)DB.h" />
@@ -121,5 +122,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)util\posix_logger.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)util\random.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)util\win_logger.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)WriteBatch.h" />
   </ItemGroup>
 </Project>

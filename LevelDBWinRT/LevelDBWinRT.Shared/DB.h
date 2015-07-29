@@ -8,6 +8,7 @@
 #include "Slice.h"
 #include "LevelDB-Iterator.h"
 #include "LevelDB-Commons.h"
+#include "WriteBatch.h"
 #include <Windows.h>
 
 namespace LevelDBWinRT {
@@ -24,6 +25,7 @@ namespace LevelDBWinRT {
 		bool Put(WriteOptions^ writeOptions, Slice^ key, Slice^ value);
 		bool Delete(WriteOptions^ writeOptions, Slice^ key);
 		Slice^ Get(ReadOptions^ readOptions, Slice^ key);
+		bool Write(WriteOptions^ writeOptions, WriteBatch^ batch);
 
 		Iterator^ NewIterator(ReadOptions ^readOptions);
 		Snapshot^ GetSnapshot();

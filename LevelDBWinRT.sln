@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LevelDBWinRT", "LevelDBWinRT", "{2911C4F7-A46C-4226-8DD7-384C37CD291A}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE.txt = LICENSE.txt
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LevelDBWinRT.Shared", "LevelDBWinRT\LevelDBWinRT.Shared\LevelDBWinRT.Shared.vcxitems", "{1F618399-56D0-41D2-B695-0096B0385A10}"
 EndProject

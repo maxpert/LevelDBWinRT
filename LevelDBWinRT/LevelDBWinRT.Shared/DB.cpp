@@ -67,4 +67,8 @@ namespace LevelDBWinRT {
 		this->db->ReleaseSnapshot(s->snapshot);
 	}
 
+	bool DB::Write(WriteOptions^ writeOptions, WriteBatch^ batch) {
+		leveldb::WriteBatch* wbatch = batch->ToLevelDBWriteBatch();
+		return this->db->Write(writeOptions->ToLevelDBOptions(), wbatch).ok();
+	}
 }
