@@ -22,8 +22,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LevelDBTest.Windows", "Leve
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LevelDBTest.WindowsPhone", "LevelDBTest\LevelDBTest.WindowsPhone\LevelDBTest.WindowsPhone.csproj", "{8FDCA78E-923C-4453-83D4-7DE7E027C315}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LevelDB.Universal", "LevelDB.Universal\LevelDB.Universal.vcxproj", "{74AF6E53-4BD6-46DB-94B4-8E3146F389EE}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		LevelDBWinRT\LevelDBWinRT.Shared\LevelDBWinRT.Shared.vcxitems*{74af6e53-4bd6-46db-94b4-8e3146f389ee}*SharedItemsImports = 4
 		LevelDBWinRT\LevelDBWinRT.Shared\LevelDBWinRT.Shared.vcxitems*{70d4f023-5c90-43fe-b519-0e3a5fcb0702}*SharedItemsImports = 4
 		LevelDBTest\LevelDBTest.Shared\LevelDBTest.Shared.projitems*{328d2c3c-3b60-4960-953a-2fa915375975}*SharedItemsImports = 13
 		LevelDBWinRT\LevelDBWinRT.Shared\LevelDBWinRT.Shared.vcxitems*{1f618399-56d0-41d2-b695-0096b0385a10}*SharedItemsImports = 9
@@ -116,6 +119,20 @@ Global
 		{8FDCA78E-923C-4453-83D4-7DE7E027C315}.Release|x86.ActiveCfg = Release|x86
 		{8FDCA78E-923C-4453-83D4-7DE7E027C315}.Release|x86.Build.0 = Release|x86
 		{8FDCA78E-923C-4453-83D4-7DE7E027C315}.Release|x86.Deploy.0 = Release|x86
+		{74AF6E53-4BD6-46DB-94B4-8E3146F389EE}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{74AF6E53-4BD6-46DB-94B4-8E3146F389EE}.Debug|ARM.ActiveCfg = Debug|ARM
+		{74AF6E53-4BD6-46DB-94B4-8E3146F389EE}.Debug|ARM.Build.0 = Debug|ARM
+		{74AF6E53-4BD6-46DB-94B4-8E3146F389EE}.Debug|x64.ActiveCfg = Debug|x64
+		{74AF6E53-4BD6-46DB-94B4-8E3146F389EE}.Debug|x64.Build.0 = Debug|x64
+		{74AF6E53-4BD6-46DB-94B4-8E3146F389EE}.Debug|x86.ActiveCfg = Debug|Win32
+		{74AF6E53-4BD6-46DB-94B4-8E3146F389EE}.Debug|x86.Build.0 = Debug|Win32
+		{74AF6E53-4BD6-46DB-94B4-8E3146F389EE}.Release|Any CPU.ActiveCfg = Release|Win32
+		{74AF6E53-4BD6-46DB-94B4-8E3146F389EE}.Release|ARM.ActiveCfg = Release|ARM
+		{74AF6E53-4BD6-46DB-94B4-8E3146F389EE}.Release|ARM.Build.0 = Release|ARM
+		{74AF6E53-4BD6-46DB-94B4-8E3146F389EE}.Release|x64.ActiveCfg = Release|x64
+		{74AF6E53-4BD6-46DB-94B4-8E3146F389EE}.Release|x64.Build.0 = Release|x64
+		{74AF6E53-4BD6-46DB-94B4-8E3146F389EE}.Release|x86.ActiveCfg = Release|Win32
+		{74AF6E53-4BD6-46DB-94B4-8E3146F389EE}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -127,5 +144,6 @@ Global
 		{328D2C3C-3B60-4960-953A-2FA915375975} = {79043196-9372-4B22-A5BC-F40DCE87BA57}
 		{1904674F-657B-496E-A838-1C344842180A} = {79043196-9372-4B22-A5BC-F40DCE87BA57}
 		{8FDCA78E-923C-4453-83D4-7DE7E027C315} = {79043196-9372-4B22-A5BC-F40DCE87BA57}
+		{74AF6E53-4BD6-46DB-94B4-8E3146F389EE} = {2911C4F7-A46C-4226-8DD7-384C37CD291A}
 	EndGlobalSection
 EndGlobal
