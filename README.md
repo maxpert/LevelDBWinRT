@@ -1,5 +1,6 @@
-**LevelDB is a fast key-value storage library written at Google that provides an ordered mapping from string keys to string values.**
+This is an unoffical port of LevelDB for Windows Runtime (forked and modified from windows port https://leveldb.angeloflogic.com/downloads/)
 
+LevelDB is a fast key-value storage library written at Google that provides an ordered mapping from string keys to string values.
 LevelDB Authors: Sanjay Ghemawat (sanjay@google.com) and Jeff Dean (jeff@google.com)
 
 # Features
@@ -35,6 +36,7 @@ be enough to get a ballpark performance estimate.
 
 # TODO:
 
+  * Use native Windows API instead of fstream to ensure better Flush and Sync.
   * Introduce Batch write operation support.
   * Compression support.
   * Comparators support.
