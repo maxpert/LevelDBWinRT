@@ -27,10 +27,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{74af6e53-4bd6-46db-94b4-8e3146f389ee}</ProjectGuid>
+    <ProjectGuid>{a64267aa-604c-4031-9408-ef28a987060b}</ProjectGuid>
     <Keyword>WindowsRuntimeComponent</Keyword>
-    <ProjectName>LevelDB.Universal</ProjectName>
-    <RootNamespace>LevelDB_Universal</RootNamespace>
+    <ProjectName>LevelDBWinRT</ProjectName>
+    <RootNamespace>LevelDBWinRT</RootNamespace>
     <DefaultLanguage>en-US</DefaultLanguage>
     <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
     <AppContainerApplication>true</AppContainerApplication>
@@ -77,7 +77,7 @@
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
   <ImportGroup Label="Shared">
-    <Import Project="..\LevelDBWinRT\LevelDBWinRT.Shared\LevelDBWinRT.Shared.vcxitems" Label="Shared" />
+    <Import Project="..\..\LevelDBWinRT\LevelDBWinRT.Shared\LevelDBWinRT.Shared.vcxitems" Label="Shared" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />

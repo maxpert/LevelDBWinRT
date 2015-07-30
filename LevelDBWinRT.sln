@@ -16,14 +16,14 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LevelDBWinRT.WindowsPhone",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest.Universal", "UnitTest.Universal\UnitTest.Universal.csproj", "{5255832A-55A6-4753-A35A-EB67B808FF12}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LevelDBWinRT", "..\LevelDBWinRT.Universal\LevelDBWinRT\LevelDBWinRT.vcxproj", "{C8E249D4-D874-4571-BE84-7DAC7BBCF60E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LevelDBWinRT", "LevelDB.Universal\LevelDBWinRT\LevelDBWinRT.vcxproj", "{A64267AA-604C-4031-9408-EF28A987060B}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		LevelDBWinRT\LevelDBWinRT.Shared\LevelDBWinRT.Shared.vcxitems*{70d4f023-5c90-43fe-b519-0e3a5fcb0702}*SharedItemsImports = 4
+		LevelDBWinRT\LevelDBWinRT.Shared\LevelDBWinRT.Shared.vcxitems*{a64267aa-604c-4031-9408-ef28a987060b}*SharedItemsImports = 4
 		LevelDBWinRT\LevelDBWinRT.Shared\LevelDBWinRT.Shared.vcxitems*{1f618399-56d0-41d2-b695-0096b0385a10}*SharedItemsImports = 9
 		LevelDBWinRT\LevelDBWinRT.Shared\LevelDBWinRT.Shared.vcxitems*{bc058170-127e-4f7b-a4bb-fa87ac4a49f5}*SharedItemsImports = 4
-		LevelDBWinRT\LevelDBWinRT.Shared\LevelDBWinRT.Shared.vcxitems*{c8e249d4-d874-4571-be84-7dac7bbcf60e}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -82,20 +82,20 @@ Global
 		{5255832A-55A6-4753-A35A-EB67B808FF12}.Release|x86.ActiveCfg = Release|x86
 		{5255832A-55A6-4753-A35A-EB67B808FF12}.Release|x86.Build.0 = Release|x86
 		{5255832A-55A6-4753-A35A-EB67B808FF12}.Release|x86.Deploy.0 = Release|x86
-		{C8E249D4-D874-4571-BE84-7DAC7BBCF60E}.Debug|Any CPU.ActiveCfg = Debug|Win32
-		{C8E249D4-D874-4571-BE84-7DAC7BBCF60E}.Debug|ARM.ActiveCfg = Debug|ARM
-		{C8E249D4-D874-4571-BE84-7DAC7BBCF60E}.Debug|ARM.Build.0 = Debug|ARM
-		{C8E249D4-D874-4571-BE84-7DAC7BBCF60E}.Debug|x64.ActiveCfg = Debug|x64
-		{C8E249D4-D874-4571-BE84-7DAC7BBCF60E}.Debug|x64.Build.0 = Debug|x64
-		{C8E249D4-D874-4571-BE84-7DAC7BBCF60E}.Debug|x86.ActiveCfg = Debug|Win32
-		{C8E249D4-D874-4571-BE84-7DAC7BBCF60E}.Debug|x86.Build.0 = Debug|Win32
-		{C8E249D4-D874-4571-BE84-7DAC7BBCF60E}.Release|Any CPU.ActiveCfg = Release|Win32
-		{C8E249D4-D874-4571-BE84-7DAC7BBCF60E}.Release|ARM.ActiveCfg = Release|ARM
-		{C8E249D4-D874-4571-BE84-7DAC7BBCF60E}.Release|ARM.Build.0 = Release|ARM
-		{C8E249D4-D874-4571-BE84-7DAC7BBCF60E}.Release|x64.ActiveCfg = Release|x64
-		{C8E249D4-D874-4571-BE84-7DAC7BBCF60E}.Release|x64.Build.0 = Release|x64
-		{C8E249D4-D874-4571-BE84-7DAC7BBCF60E}.Release|x86.ActiveCfg = Release|Win32
-		{C8E249D4-D874-4571-BE84-7DAC7BBCF60E}.Release|x86.Build.0 = Release|Win32
+		{A64267AA-604C-4031-9408-EF28A987060B}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{A64267AA-604C-4031-9408-EF28A987060B}.Debug|ARM.ActiveCfg = Debug|ARM
+		{A64267AA-604C-4031-9408-EF28A987060B}.Debug|ARM.Build.0 = Debug|ARM
+		{A64267AA-604C-4031-9408-EF28A987060B}.Debug|x64.ActiveCfg = Debug|x64
+		{A64267AA-604C-4031-9408-EF28A987060B}.Debug|x64.Build.0 = Debug|x64
+		{A64267AA-604C-4031-9408-EF28A987060B}.Debug|x86.ActiveCfg = Debug|Win32
+		{A64267AA-604C-4031-9408-EF28A987060B}.Debug|x86.Build.0 = Debug|Win32
+		{A64267AA-604C-4031-9408-EF28A987060B}.Release|Any CPU.ActiveCfg = Release|Win32
+		{A64267AA-604C-4031-9408-EF28A987060B}.Release|ARM.ActiveCfg = Release|ARM
+		{A64267AA-604C-4031-9408-EF28A987060B}.Release|ARM.Build.0 = Release|ARM
+		{A64267AA-604C-4031-9408-EF28A987060B}.Release|x64.ActiveCfg = Release|x64
+		{A64267AA-604C-4031-9408-EF28A987060B}.Release|x64.Build.0 = Release|x64
+		{A64267AA-604C-4031-9408-EF28A987060B}.Release|x86.ActiveCfg = Release|Win32
+		{A64267AA-604C-4031-9408-EF28A987060B}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -105,6 +105,6 @@ Global
 		{BC058170-127E-4F7B-A4BB-FA87AC4A49F5} = {2911C4F7-A46C-4226-8DD7-384C37CD291A}
 		{70D4F023-5C90-43FE-B519-0E3A5FCB0702} = {2911C4F7-A46C-4226-8DD7-384C37CD291A}
 		{5255832A-55A6-4753-A35A-EB67B808FF12} = {2911C4F7-A46C-4226-8DD7-384C37CD291A}
-		{C8E249D4-D874-4571-BE84-7DAC7BBCF60E} = {2911C4F7-A46C-4226-8DD7-384C37CD291A}
+		{A64267AA-604C-4031-9408-EF28A987060B} = {2911C4F7-A46C-4226-8DD7-384C37CD291A}
 	EndGlobalSection
 EndGlobal

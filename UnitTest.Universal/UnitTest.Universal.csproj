@@ -125,8 +125,8 @@
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\LevelDBWinRT.Universal\LevelDBWinRT\LevelDBWinRT.vcxproj">
-      <Project>{c8e249d4-d874-4571-be84-7dac7bbcf60e}</Project>
+    <ProjectReference Include="..\LevelDB.Universal\LevelDBWinRT\LevelDBWinRT.vcxproj">
+      <Project>{a64267aa-604c-4031-9408-ef28a987060b}</Project>
       <Name>LevelDBWinRT</Name>
     </ProjectReference>
   </ItemGroup>
