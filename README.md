@@ -5,7 +5,7 @@
 LevelDB is a fast key-value storage library written at Google that provides an ordered mapping from string keys to string values.
 LevelDB Authors: Sanjay Ghemawat (sanjay@google.com) and Jeff Dean (jeff@google.com)
 
-# Windows Port Notes
+# Features
   * Keys and values can be arbitrary byte arrays (Slice.FromArray)
   * Data is stored and sorted by key.
   * Callers can provide custom comparison function to override the sort order (Not implemented yet).
