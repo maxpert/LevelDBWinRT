@@ -20,7 +20,13 @@
         [TestInitialize]
         public void Initialize()
         {
-            this.levelDB = new DB("foo.bar");
+            Options options = new Options
+            {
+                Filter = FilterType.BloomFilter,
+                FilterParameters = new BloomFilterParams { BitsPerKey = 2048 }
+            };
+
+            this.levelDB = new DB(options, "foo.bar");
         }
 
         [TestCleanup]

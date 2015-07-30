@@ -7,10 +7,8 @@
 #include "port\port.h"
 
 namespace LevelDBWinRT {
-	DB::DB(String^ path) {
-		leveldb::Options opts;
-		opts.create_if_missing = true;
-		leveldb::Status status = leveldb::DB::Open(opts, Utils::FromPlatformString(path), &this->db);
+	DB::DB(Options^ options, String^ path) {
+		leveldb::Status status = leveldb::DB::Open(options->ToLevelDBOptions(), Utils::FromPlatformString(path), &this->db);
 
 		if (!status.ok()) {
 			throw Utils::ExceptionFromStatus(0, status);

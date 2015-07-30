@@ -19,7 +19,7 @@ namespace LevelDBWinRT {
 	private:
 		leveldb::DB* db;
 	public:
-		DB(String^ path);
+		DB(Options^ options, String^ path);
 		virtual ~DB();
 
 		bool Put(WriteOptions^ writeOptions, Slice^ key, Slice^ value);

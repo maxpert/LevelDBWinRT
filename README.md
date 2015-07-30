@@ -1,43 +1,26 @@
-This is an unoffical port of LevelDB for Windows Runtime (forked and modified from windows port https://leveldb.angeloflogic.com/downloads/)
+# LevelDB Windows Runtime Component
+
+ This project aims to enable usage of LevelDB on Windows Phone 8+ and Windows 8+ platforms. This includes Windows 10 Universal Platform. LevelDB stores keys and values in arbitrary byte arrays, and data is sorted by key. It supports batching writes, forward and backward iteration, and compression of the data via Google's Snappy compression library.
 
 LevelDB is a fast key-value storage library written at Google that provides an ordered mapping from string keys to string values.
 LevelDB Authors: Sanjay Ghemawat (sanjay@google.com) and Jeff Dean (jeff@google.com)
 
-# Features
-  * Keys and values are arbitrary byte arrays.
-  * Data is stored sorted by key.
-  * Callers can provide a custom comparison function to override the sort order.
-  * The basic operations are `Put(key,value)`, `Get(key)`, `Delete(key)`.
-  * Multiple changes can be made in one atomic batch.
-  * Users can create a transient snapshot to get a consistent view of data.
-  * Forward and backward iteration is supported over the data.
-  * Data is automatically compressed using the [Snappy compression library](http://code.google.com/p/snappy).
-  * External activity (file system operations etc.) is relayed through a virtual interface so users can customize the operating system interactions.
-  * [Detailed documentation](http://htmlpreview.github.io/?https://github.com/google/leveldb/blob/master/doc/index.html) about how to use the library is included with the source code.
-
-
-# Limitations
-  * This is not a SQL database.  It does not have a relational data model, it does not support SQL queries, and it has no support for indexes.
-  * Only a single process (possibly multi-threaded) can access a particular database at a time.
-  * There is no client-server support builtin to the library.  An application that needs such support will have to wrap their own server around the library.
-
-# Performance
-
-Here is a performance report (with explanations) from the run of the
-included db_bench program.  The results are somewhat noisy, but should
-be enough to get a ballpark performance estimate.
-
-# WinRT Port Notes
-
-  * Basic Get/Put/Delete support (work in progress).
-  * To use the library either add the corresponding project to your solution and refer it in your dependencies.
-  * Be sure to choose ARM or x86 architecture for your project.
-  * Snappy compression not enabled yet.
+# Windows Port Notes
+  * Keys and values can be arbitrary byte arrays (Slice.FromArray)
+  * Data is stored and sorted by key.
+  * Callers can provide custom comparison function to override the sort order (Not implemented yet).
+  * Basic Get(key)/Put(key, value)/Delete(key) support.
+  * Atomic batch operations can make multiple changes.
+  * Users can create transient snapshot to get a consistent view of data.
+  * Iterator support, with forward and backward iteration.
+  * Basic wrappers for WriteOptions, ReadOptions, Options.
+  * Snappy, and LZ4 compression (Not implemented yet).
+  * ARM or x86 architecture supported.
 
 # TODO:
 
   * Use native Windows API instead of fstream to ensure better Flush and Sync.
-  * Introduce Batch write operation support.
   * Compression support.
   * Comparators support.
-  
+
+This is an unoffical port of LevelDB for Windows Runtime (forked and modified from another Windows port that was only working on .NET https://leveldb.angeloflogic.com/downloads/).
