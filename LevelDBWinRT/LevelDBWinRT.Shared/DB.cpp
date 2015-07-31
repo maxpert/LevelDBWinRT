@@ -38,11 +38,16 @@ namespace LevelDBWinRT {
 		}
 
 		Slice^ valueSlice = nullptr;
-		itr->Seek(key->ToLevelDBSlice());
-
+		leveldb::Slice searchKey = key->ToLevelDBSlice();
+		itr->Seek(searchKey);
+		
+		// If key is exactly same then return wrapped slice object
 		if (itr->Valid()) {
-			leveldb::Slice s = itr->value();
-			valueSlice = ref new Slice(s);
+			leveldb::Slice k = itr->key();
+			if (k.size() == searchKey.size() && memcmp(k.data(), searchKey.data(), k.size()) == 0) {
+				leveldb::Slice s = itr->value();
+				valueSlice = ref new Slice(s);
+			}
 		}
 
 		delete itr;

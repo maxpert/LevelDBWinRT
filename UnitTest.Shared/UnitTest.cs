@@ -22,8 +22,9 @@
         {
             Options options = new Options
             {
+                CreateIfMissing = true,
                 Filter = FilterType.BloomFilter,
-                FilterParameters = new BloomFilterParams { BitsPerKey = 2048 }
+                FilterParameters = new BloomFilterParams { BitsPerKey = 64 }
             };
 
             this.levelDB = new DB(options, "foo.bar");
@@ -42,6 +43,21 @@
             Assert.AreEqual(
                 "bar",
                 this.levelDB.Get(new ReadOptions(), Slice.FromString("foo")).AsString());
+        }
+
+
+        [TestMethod]
+        public void TestExactGetPut()
+        {
+            var readOptions = new ReadOptions();
+            Assert.IsTrue(this.levelDB.Put(new WriteOptions(), Slice.FromString("foo"), Slice.FromString("bar")));
+
+            Assert.IsNotNull(this.levelDB.Get(readOptions, Slice.FromString("foo")));
+            Assert.IsNull(this.levelDB.Get(readOptions, Slice.FromString("f")));
+            Assert.IsNull(this.levelDB.Get(readOptions, Slice.FromString("g")));
+            Assert.AreEqual(
+                "bar",
+                this.levelDB.Get(readOptions, Slice.FromString("foo")).AsString());
         }
 
         [TestMethod]
