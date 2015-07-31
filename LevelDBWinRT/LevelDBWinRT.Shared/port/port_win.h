@@ -120,33 +120,21 @@ namespace leveldb {
 
 		inline bool Snappy_Compress(const char* input, size_t length,
 			::std::string* output) {
-#ifdef THIRD_PARTY_SNAPPY_SNAPPY_H__
 			output->resize(snappy::MaxCompressedLength(length));
 			size_t outlen;
 			snappy::RawCompress(input, length, &(*output)[0], &outlen);
 			output->resize(outlen);
 			return true;
-#endif
-
-			return false;
 		}
 
 		inline bool Snappy_GetUncompressedLength(const char* input, size_t length,
 			size_t* result) {
-#ifdef THIRD_PARTY_SNAPPY_SNAPPY_H__
 			return snappy::GetUncompressedLength(input, length, result);
-#else
-			return false;
-#endif
 		}
 
 		inline bool Snappy_Uncompress(const char* input, size_t length,
 			char* output) {
-#ifdef THIRD_PARTY_SNAPPY_SNAPPY_H__
 			return snappy::RawUncompress(input, length, output);
-#else
-			return false;
-#endif
 		}
 
 		inline bool GetHeapProfile(void(*func)(void*, const char*, int), void* arg) {
