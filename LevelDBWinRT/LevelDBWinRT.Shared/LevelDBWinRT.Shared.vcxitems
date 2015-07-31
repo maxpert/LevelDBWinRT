@@ -35,6 +35,10 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)helpers\memenv\memenv.cc" />
     <ClCompile Include="$(MSBuildThisFileDirectory)port\port_win.cc" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Slice.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)snappy\snappy-c.cc" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)snappy\snappy-sinksource.cc" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)snappy\snappy-stubs-internal.cc" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)snappy\snappy.cc" />
     <ClCompile Include="$(MSBuildThisFileDirectory)table\block.cc" />
     <ClCompile Include="$(MSBuildThisFileDirectory)table\block_builder.cc" />
     <ClCompile Include="$(MSBuildThisFileDirectory)table\filter_block.cc" />
@@ -104,6 +108,13 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)port\thread_annotations.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)port\win\stdint.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Slice.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Snappy.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)snappy\snappy-c.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)snappy\snappy-internal.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)snappy\snappy-sinksource.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)snappy\snappy-stubs-internal.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)snappy\snappy-stubs-public.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)snappy\snappy.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)table\block.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)table\block_builder.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)table\filter_block.h" />

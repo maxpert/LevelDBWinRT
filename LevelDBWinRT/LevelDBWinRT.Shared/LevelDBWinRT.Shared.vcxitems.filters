@@ -22,6 +22,9 @@
     <Filter Include="db">
       <UniqueIdentifier>{c11decde-3c68-45e1-90bb-d278282cf731}</UniqueIdentifier>
     </Filter>
+    <Filter Include="snappy">
+      <UniqueIdentifier>{25927c40-3685-4416-ba2e-f4863908dc0e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)db\builder.cc">
@@ -155,6 +158,18 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)WriteBatch.cpp">
       <Filter>wrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)snappy\snappy-c.cc">
+      <Filter>snappy</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)snappy\snappy-sinksource.cc">
+      <Filter>snappy</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)snappy\snappy-stubs-internal.cc">
+      <Filter>snappy</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)snappy\snappy.cc">
+      <Filter>snappy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -336,6 +351,27 @@
       <Filter>wrapper</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)WriteBatch.h">
+      <Filter>wrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)snappy\snappy-c.h">
+      <Filter>snappy</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)snappy\snappy-internal.h">
+      <Filter>snappy</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)snappy\snappy-sinksource.h">
+      <Filter>snappy</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)snappy\snappy-stubs-internal.h">
+      <Filter>snappy</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)snappy\snappy.h">
+      <Filter>snappy</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)snappy\snappy-stubs-public.h">
+      <Filter>snappy</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Snappy.h">
       <Filter>wrapper</Filter>
     </ClInclude>
   </ItemGroup>

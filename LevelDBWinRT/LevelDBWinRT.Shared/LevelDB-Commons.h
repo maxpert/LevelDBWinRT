@@ -18,6 +18,7 @@ namespace LevelDBWinRT {
 
 	public enum class CompressorType {
 		None = 0,
+		Snappy = 1,
 	};
 
 	public interface class IFilterParams {
@@ -52,6 +53,14 @@ namespace LevelDBWinRT {
 				}
 			}
 
+			switch(this->Compressor) {
+			case CompressorType::Snappy:
+				opts.compression = leveldb::CompressionType::kSnappyCompression;
+				break;
+			default:
+				opts.compression = leveldb::CompressionType::kNoCompression;
+				break;
+			}
 
 			return opts;
 		}

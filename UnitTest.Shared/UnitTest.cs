@@ -9,7 +9,7 @@
     [TestClass]
     public class BasicAPITests
     {
-        private DB levelDB;
+        private static DB LevelDB;
 
         [AssemblyInitialize]
         public static void AssemblyInit(TestContext context)
@@ -17,32 +17,33 @@
             
         }
 
-        [TestInitialize]
-        public void Initialize()
+        [ClassInitialize]
+        public static void Initialize(TestContext context)
         {
             Options options = new Options
             {
                 CreateIfMissing = true,
+                Compressor = CompressorType.Snappy,
                 Filter = FilterType.BloomFilter,
                 FilterParameters = new BloomFilterParams { BitsPerKey = 64 }
             };
 
-            this.levelDB = new DB(options, "foo.bar");
+            LevelDB = new DB(options, "footest.snappy");
         }
 
-        [TestCleanup]
-        public void Cleanup()
+        [ClassCleanup]
+        public static void Cleanup()
         {
-            this.levelDB.Dispose();
+            LevelDB.Dispose();
         }
 
         [TestMethod]
         public void TestPut()
         {
-            Assert.IsTrue(this.levelDB.Put(new WriteOptions(), Slice.FromString("foo"), Slice.FromString("bar")));
+            Assert.IsTrue(LevelDB.Put(new WriteOptions(), Slice.FromString("foo"), Slice.FromString("bar")));
             Assert.AreEqual(
                 "bar",
-                this.levelDB.Get(new ReadOptions(), Slice.FromString("foo")).AsString());
+                LevelDB.Get(new ReadOptions(), Slice.FromString("foo")).AsString());
         }
 
 
@@ -50,24 +51,24 @@
         public void TestExactGetPut()
         {
             var readOptions = new ReadOptions();
-            Assert.IsTrue(this.levelDB.Put(new WriteOptions(), Slice.FromString("foo"), Slice.FromString("bar")));
+            Assert.IsTrue(LevelDB.Put(new WriteOptions(), Slice.FromString("foo"), Slice.FromString("bar")));
 
-            Assert.IsNotNull(this.levelDB.Get(readOptions, Slice.FromString("foo")));
-            Assert.IsNull(this.levelDB.Get(readOptions, Slice.FromString("f")));
-            Assert.IsNull(this.levelDB.Get(readOptions, Slice.FromString("g")));
+            Assert.IsNotNull(LevelDB.Get(readOptions, Slice.FromString("foo")));
+            Assert.IsNull(LevelDB.Get(readOptions, Slice.FromString("f")));
+            Assert.IsNull(LevelDB.Get(readOptions, Slice.FromString("g")));
             Assert.AreEqual(
                 "bar",
-                this.levelDB.Get(readOptions, Slice.FromString("foo")).AsString());
+                LevelDB.Get(readOptions, Slice.FromString("foo")).AsString());
         }
 
         [TestMethod]
         public void TestDelete()
         {
-            Assert.IsTrue(this.levelDB.Put(new WriteOptions(), Slice.FromString("foo"), Slice.FromString("bar")));
-            Assert.IsTrue(this.levelDB.Delete(new WriteOptions(), Slice.FromString("foo")));
+            Assert.IsTrue(LevelDB.Put(new WriteOptions(), Slice.FromString("foo"), Slice.FromString("bar")));
+            Assert.IsTrue(LevelDB.Delete(new WriteOptions(), Slice.FromString("foo")));
             Assert.AreEqual(
                 null,
-                this.levelDB.Get(new ReadOptions(), Slice.FromString("foo")));
+                LevelDB.Get(new ReadOptions(), Slice.FromString("foo")));
         }
 
 
@@ -82,15 +83,15 @@
                 writeBatch.Put(Slice.FromString("Key"+i), Slice.FromByteArray(BitConverter.GetBytes(i)));
             }
 
-            this.levelDB.Write(writeOptions, writeBatch);
+            LevelDB.Write(writeOptions, writeBatch);
             
             for (var j = 0; j < 10; j++)
             {
                 Slice key = Slice.FromString("Key" + j);
-                Slice readSlice = this.levelDB.Get(readOptions, key);
+                Slice readSlice = LevelDB.Get(readOptions, key);
                 Assert.IsNotNull(readSlice);
                 Assert.AreEqual(j, BitConverter.ToInt32(readSlice.ToByteArray(), 0));
-                Assert.IsTrue(this.levelDB.Delete(writeOptions, key));
+                Assert.IsTrue(LevelDB.Delete(writeOptions, key));
             }
         }
 
@@ -118,7 +119,7 @@
             int counter = 0;
             for (var i = 0; i < totalInserts; i++)
             {
-                if (this.levelDB.Put(
+                if (LevelDB.Put(
                     writeOptions, 
                     Slice.FromByteArray(BitConverter.GetBytes(i)),
                     Slice.FromString(DateTime.Now.ToString())))
