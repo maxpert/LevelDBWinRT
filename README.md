@@ -26,6 +26,7 @@ The library contains basic constructs that serve as a wrapper around C++ LevelDB
 LevelDB = new DB(options, "test.ordinal.snappy");
 ```
 
+__NOTE:__ if you don't specify an absolute path to the database it's created under ApplicationData.Current.LocalFolder. If a complete path is specified the directory will be created under the specified path. If the database is nested inside folders make sure the parent directory tree has been created before opening the database.
 Options object can be created specifying various parameters:
 
 ```C#
