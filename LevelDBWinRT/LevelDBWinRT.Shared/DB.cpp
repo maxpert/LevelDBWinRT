@@ -32,7 +32,15 @@ namespace LevelDBWinRT {
 		}
 
 		int Compare(const leveldb::Slice& a, const leveldb::Slice& b) const {
-			return this->comparator->Compare(ref new Slice(a), ref new Slice(b));
+			try 
+			{
+				return this->comparator->Compare(ref new Slice(a), ref new Slice(b));
+			}
+			catch (Platform::Exception^ e) {
+				String^ detailMessage = L"Comparator raised an exception. \n";
+				detailMessage = String::Concat(detailMessage, e->ToString());
+				throw ref new COMException(E_ABORT, detailMessage);
+			}
 		}
 
 		const char* Name() const {
@@ -49,10 +57,13 @@ namespace LevelDBWinRT {
 	};
 
 	DB::DB(Options^ options, String^ path) {
-		leveldb::Options opts = options->ToLevelDBOptions();
+		this->openOptions = options->ToLevelDBOptions();
 
 		if (options->Comparator != nullptr) {
-			opts.comparator = this->comparator = new LevelDBComparatorWrapper(options->Comparator);
+			this->openOptions.comparator = this->comparator = new LevelDBComparatorWrapper(options->Comparator);
+		}
+		else {
+			this->comparator = NULL;
 		}
 		
 		// Make sure the path provided is absolute path like C:\ or D:\ otherwise 
@@ -65,7 +76,7 @@ namespace LevelDBWinRT {
 			path = String::Concat(path, ref new String(wpath.c_str()));
 		}
 
-		leveldb::Status status = leveldb::DB::Open(opts, Utils::FromPlatformString(path), &this->db);
+		leveldb::Status status = leveldb::DB::Open(this->openOptions, Utils::FromPlatformString(path), &this->db);
 
 		if (!status.ok()) {
 			throw Utils::ExceptionFromStatus(E_FAIL, status);
@@ -75,8 +86,12 @@ namespace LevelDBWinRT {
 	DB::~DB() {
 		if (this->db != NULL) {
 			delete this->db;
-			delete this->comparator;
 			this->db = NULL;
+		}
+
+		if (this->comparator != NULL) {
+			delete this->comparator;
+			this->comparator = NULL;
 		}
 	}
 
@@ -102,7 +117,7 @@ namespace LevelDBWinRT {
 		// If key is exactly same then return wrapped slice object
 		if (itr->Valid()) {
 			leveldb::Slice k = itr->key();
-			if (k.size() == searchKey.size() && comparator->Compare(k, searchKey) == 0) {
+			if (k.size() == searchKey.size() && this->openOptions.comparator->Compare(k, searchKey) == 0) {
 				leveldb::Slice s = itr->value();
 				valueSlice = ref new Slice(s);
 			}

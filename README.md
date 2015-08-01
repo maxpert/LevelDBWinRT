@@ -14,13 +14,103 @@ LevelDB Authors: Sanjay Ghemawat (sanjay@google.com) and Jeff Dean (jeff@google.
   * Users can create transient snapshot to get a consistent view of data.
   * Iterator support, with forward and backward iteration.
   * Basic wrappers for WriteOptions, ReadOptions, Options.
-  * Snappy, and LZ4 compression (Not implemented yet).
+  * Builtin compression support with Snappy.
+  * Custom comparator support.
   * ARM or x86 architecture supported.
+
+# Examples
+
+The library contains basic constructs that serve as a wrapper around C++ LevelDB API. Most of them are aligned close to the native API but some changes have been made here and there to comply .NET and future support. You can create a database simply by creating a LevelDBWinRT.DB object:
+
+```C#
+LevelDB = new DB(options, "test.ordinal.snappy");
+```
+
+Options object can be created specifying various parameters:
+
+```C#
+Options options = new Options
+{
+    CreateIfMissing = true,
+    Compressor = CompressorType.Snappy,
+    Filter = FilterType.BloomFilter,
+    FilterParameters = new BloomFilterParams { BitsPerKey = 32 }
+};
+```
+
+Once you have used database object you can simply close it by calling Dispose method on database object:
+
+```C#
+LevelDB.Dispose();
+```
+
+The database object supports all basic operations:
+
+```C#
+ReadOptions readOptions = new ReadOptions();
+WriteOptions writeOptions = new WriteOptions();
+
+bool putSuccess = LevelDB.Put(writeOptions, Slice.FromString("foo"), Slice.FromString("bar"));
+Slice value = LevelDB.Get(readOptions, Slice.FromString("foo"));
+
+if (value == null)
+{
+  Debug.WriteLine("Key not found");
+}
+else
+{
+  Debug.WriteLine("Key value = {0}", value.AsString());
+}
+
+LevelDB.Delete(new WriteOptions(), Slice.FromString("foo"))
+
+WriteBatch writeBatch = new WriteBatch();
+for (var i = 0; i < 10; i++)
+{
+   writeBatch.Put(Slice.FromString("Key"+i), Slice.FromByteArray(BitConverter.GetBytes(i)));
+}
+
+writeBatch.Delete(Slice.FromString("Key5"));
+
+bool writeBatch = LevelDB.Write(writeOptions, writeBatch);
+```
+
+## Key comparators
+
+A key comparator can be implemented by implementing a class from IKeyComparator, here is a example of case insensitive key comparator:
+
+```C#
+internal class OrdinalStringComparator : IKeyComparator
+{
+    public int Compare(Slice a, Slice b)
+    {
+        return string.Compare(a.AsString(), b.AsString(), StringComparison.OrdinalIgnoreCase);
+    }
+
+    public string Name
+    {
+        get { return "OrdinalStringComparator"; }
+    }
+}
+```
+
+This comparator can then be passed in to Options object:
+
+```C#
+Options options = new Options
+{
+    CreateIfMissing = true,
+    Comparator = new OrdinalStringComparator(),
+    Compressor = CompressorType.Snappy,
+    Filter = FilterType.BloomFilter,
+    FilterParameters = new BloomFilterParams { BitsPerKey = 32 }
+};
+```
+
+_Once a database has been created with a specific comparator it must always be opened with same comparator_. Make sure your Compare method never throws an exception otherwise the behaviour is undefined.
 
 # TODO:
 
   * Use native Windows API instead of fstream to ensure better Flush and Sync.
-  * Compression support.
-  * Comparators support.
 
 This is an unoffical port of LevelDB for Windows Runtime (forked and modified from another Windows port that was only working on .NET https://leveldb.angeloflogic.com/downloads/).
