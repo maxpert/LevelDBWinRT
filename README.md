@@ -107,7 +107,7 @@ Options options = new Options
 };
 ```
 
-_Once a database has been created with a specific comparator it must always be opened with same comparator_. Make sure your Compare method never throws an exception otherwise the behaviour is undefined.
+_Once a database has been created with a specific comparator it must be always opened with same comparator (Atleast name should match)_. Make sure your Compare method never throws an exception otherwise the behavior is undefined.
 
 # TODO:
 
