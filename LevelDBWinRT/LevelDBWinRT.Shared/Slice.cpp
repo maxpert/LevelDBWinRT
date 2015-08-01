@@ -9,7 +9,7 @@ using namespace Platform;
 using namespace Platform::Runtime::InteropServices;
 
 namespace LevelDBWinRT {
-	Slice::Slice(leveldb::Slice& slice) {
+	Slice::Slice(const leveldb::Slice& slice) {
 		this->buffer = ref new Array<uint8>((int)slice.size());
 		memcpy_s(this->buffer->Data, this->buffer->Length, slice.data(), this->buffer->Length);
 	}

@@ -374,5 +374,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Snappy.h">
       <Filter>wrapper</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)KeyComparator.h">
+      <Filter>wrapper</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

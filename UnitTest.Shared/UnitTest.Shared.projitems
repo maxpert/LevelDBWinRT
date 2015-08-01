@@ -9,6 +9,7 @@
     <Import_RootNamespace>UnitTest.Shared</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)ComparatorTest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UnitTest.cs" />
   </ItemGroup>
 </Project>

@@ -28,7 +28,7 @@
                 FilterParameters = new BloomFilterParams { BitsPerKey = 64 }
             };
 
-            LevelDB = new DB(options, "footest.snappy");
+            LevelDB = new DB(options, "test.snappy");
         }
 
         [ClassCleanup]

@@ -18,6 +18,7 @@ namespace LevelDBWinRT {
 	{
 	private:
 		leveldb::DB* db;
+		leveldb::Comparator* comparator;
 	public:
 		DB(Options^ options, String^ path);
 		virtual ~DB();

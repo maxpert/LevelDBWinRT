@@ -15,7 +15,7 @@ namespace LevelDBWinRT {
 	internal:
 		Array<uint8>^ buffer;
 	internal:
-		Slice(leveldb::Slice& slice);
+		Slice(const leveldb::Slice& slice);
 		Slice(const Array<uint8>^ bytes);
 		Slice(String^ str);
 

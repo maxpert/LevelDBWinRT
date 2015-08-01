@@ -7,6 +7,8 @@
 #include "leveldb\options.h"
 #include "leveldb\cache.h"
 #include "leveldb\filter_policy.h"
+#include "KeyComparator.h"
+#include "leveldb\comparator.h"
 #include <Windows.h>
 
 namespace LevelDBWinRT {
@@ -79,6 +81,8 @@ namespace LevelDBWinRT {
 
 		property CompressorType	Compressor;
 
+		property IKeyComparator^ Comparator;
+
 		Options() {
 			this->CreateIfMissing = false;
 			this->ErrorIfExists = false;
@@ -92,6 +96,8 @@ namespace LevelDBWinRT {
 			
 			this->Filter = FilterType::None;
 			this->Compressor = CompressorType::None;
+
+			this->Comparator = nullptr;
 		}
 	};
 

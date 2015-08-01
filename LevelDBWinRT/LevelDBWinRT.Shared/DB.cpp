@@ -4,20 +4,78 @@
 
 #include "DB.h"
 #include "Utils.h"
+#include "leveldb\comparator.h"
+#include "KeyComparator.h"
 #include "port\port.h"
+#include <Windows.h>
+
+using Windows::Storage::ApplicationData;
+using Windows::ApplicationModel::Package;
 
 namespace LevelDBWinRT {
+
+	class LevelDBComparatorWrapper : public leveldb::Comparator {
+	private:
+		IKeyComparator^ comparator;
+		std::string name;
+
+	public:
+		LevelDBComparatorWrapper(IKeyComparator^ c) {
+			std::wstring wsname(c->Name->Data());
+
+			this->comparator = c;
+			this->name = leveldb::port::ws2s(wsname);
+		}
+
+		virtual ~LevelDBComparatorWrapper() {
+			this->comparator = nullptr;
+		}
+
+		int Compare(const leveldb::Slice& a, const leveldb::Slice& b) const {
+			return this->comparator->Compare(ref new Slice(a), ref new Slice(b));
+		}
+
+		const char* Name() const {
+			return this->name.c_str();
+		}
+
+		void FindShortestSeparator(std::string* p, const leveldb::Slice& s) const {
+			return;
+		}
+
+		void FindShortSuccessor(std::string* p) const {
+			return;
+		}
+	};
+
 	DB::DB(Options^ options, String^ path) {
-		leveldb::Status status = leveldb::DB::Open(options->ToLevelDBOptions(), Utils::FromPlatformString(path), &this->db);
+		leveldb::Options opts = options->ToLevelDBOptions();
+
+		if (options->Comparator != nullptr) {
+			opts.comparator = this->comparator = new LevelDBComparatorWrapper(options->Comparator);
+		}
+		
+		// Make sure the path provided is absolute path like C:\ or D:\ otherwise 
+		// append the localfolder path as prefix to whatever is passed in path
+		std::wstring wpath(path->Data());
+		if (wpath.find(L":\\") != 1) {
+			ApplicationData^ currentAppData = ApplicationData::Current;
+			path = ref new String(currentAppData->LocalFolder->Path->Data());
+			path = String::Concat(path, L"\\");
+			path = String::Concat(path, ref new String(wpath.c_str()));
+		}
+
+		leveldb::Status status = leveldb::DB::Open(opts, Utils::FromPlatformString(path), &this->db);
 
 		if (!status.ok()) {
-			throw Utils::ExceptionFromStatus(0, status);
+			throw Utils::ExceptionFromStatus(E_FAIL, status);
 		}
 	}
 
 	DB::~DB() {
 		if (this->db != NULL) {
 			delete this->db;
+			delete this->comparator;
 			this->db = NULL;
 		}
 	}
@@ -44,7 +102,7 @@ namespace LevelDBWinRT {
 		// If key is exactly same then return wrapped slice object
 		if (itr->Valid()) {
 			leveldb::Slice k = itr->key();
-			if (k.size() == searchKey.size() && memcmp(k.data(), searchKey.data(), k.size()) == 0) {
+			if (k.size() == searchKey.size() && comparator->Compare(k, searchKey) == 0) {
 				leveldb::Slice s = itr->value();
 				valueSlice = ref new Slice(s);
 			}
