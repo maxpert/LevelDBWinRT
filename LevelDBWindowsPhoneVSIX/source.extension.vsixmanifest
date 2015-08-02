@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
+  <Metadata>
+    <Identity Id="maxpert.LevelDBWindowsPhoneVSIX" Version="0.9" Language="en-US" Publisher="Zohaib Sibte Hassan" />
+    <DisplayName>LevelDB for WindowsPhone 8.1</DisplayName>
+    <Description xml:space="preserve">This is an unofficial port of LevelDB for Windows Phone 8.1+.Windows Runtime Component for LevelDB. This is an unofficial port of LevelDB for Windows Phone 8.1+, Windows 8.1+, Windows 10 Universal</Description>
+    <License>LICENSE.txt</License>
+  </Metadata>
+  <Installation AllUsers="true" Scope="Global">
+    <InstallationTarget Id="Microsoft.ExtensionSDK" 
+                        TargetPlatformIdentifier="WindowsPhoneApp" 
+                        TargetPlatformVersion="v8.1" 
+                        SdkName="LevelDBWinRT.WindowsPhone" 
+                        SdkVersion="0.9" />
+  </Installation>
+  <Assets>
+    <Asset Type="Microsoft.ExtensionSDK" Path="SDKManifest.xml" />
+  </Assets>
+</PackageManifest>

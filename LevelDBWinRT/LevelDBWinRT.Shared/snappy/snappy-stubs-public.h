@@ -39,6 +39,7 @@
 #include <stdint.h>
 #include <stddef.h>
 
+// ssize_t defination for Visual Studio
 #if defined(_MSC_VER)
 #include <BaseTsd.h>
 typedef SSIZE_T ssize_t;
