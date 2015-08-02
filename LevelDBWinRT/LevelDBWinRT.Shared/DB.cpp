@@ -96,14 +96,39 @@ namespace LevelDBWinRT {
 	}
 
 	bool DB::Put(WriteOptions^ writeOptions, Slice^ key, Slice^ value) {
+		if (key == nullptr || value == nullptr) {
+			throw ref new InvalidArgumentException(L"key or value must not be null");
+		}
+
+		if (writeOptions == nullptr) {
+			writeOptions = ref new WriteOptions();
+		}
+
 		return this->db->Put(writeOptions->ToLevelDBOptions(), key->ToLevelDBSlice(), value->ToLevelDBSlice()).ok();
 	}
 
 	bool DB::Delete(WriteOptions^ writeOptions, Slice^ key) {
+		if (key == nullptr) {
+			throw ref new InvalidArgumentException(L"key must not be null");
+		}
+
+		if (writeOptions == nullptr) {
+			writeOptions = ref new WriteOptions();
+		}
+
 		return this->db->Delete(writeOptions->ToLevelDBOptions(), key->ToLevelDBSlice()).ok();
 	}
 
 	Slice^ DB::Get(ReadOptions^ readOptions, Slice^ key) {
+		if (key == nullptr) {
+			throw ref new InvalidArgumentException(L"key must not be null");
+		}
+
+		if (readOptions == nullptr) {
+			readOptions = ref new ReadOptions();
+			readOptions->FillCache = true;
+		}
+
 		leveldb::Iterator* itr = this->db->NewIterator(readOptions->ToLevelDBOptions());
 
 		if (itr == NULL) {
@@ -128,6 +153,11 @@ namespace LevelDBWinRT {
 	}
 
 	Iterator^ DB::NewIterator(ReadOptions^ opts) {
+		if (opts == nullptr) {
+			opts = ref new ReadOptions();
+			opts->FillCache = true;
+		}
+
 		return ref new Iterator(
 			this->db->NewIterator(opts->ToLevelDBOptions())
 		);
@@ -140,10 +170,22 @@ namespace LevelDBWinRT {
 	}
 
 	void DB::ReleaseSnapshot(Snapshot^ s) {
+		if (s == nullptr) {
+			throw ref new InvalidArgumentException(L"Can't release null snapshot");
+		}
+
 		this->db->ReleaseSnapshot(s->snapshot);
 	}
 
 	bool DB::Write(WriteOptions^ writeOptions, WriteBatch^ batch) {
+		if (batch == nullptr) {
+			throw ref new InvalidArgumentException(L"Parameter batch can't be null");
+		}
+
+		if (writeOptions == nullptr) {
+			writeOptions = ref new WriteOptions();
+		}
+
 		leveldb::WriteBatch* wbatch = batch->ToLevelDBWriteBatch();
 		return this->db->Write(writeOptions->ToLevelDBOptions(), wbatch).ok();
 	}

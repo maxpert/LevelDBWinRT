@@ -14,10 +14,18 @@ namespace LevelDBWinRT {
 	}
 
 	void WriteBatch::Put(Slice^ key, Slice^ value) {
+		if (key == nullptr || value == nullptr) {
+			throw ref new InvalidArgumentException(L"key or value must not be null");
+		}
+
 		this->batch->Put(key->ToLevelDBSlice(), value->ToLevelDBSlice());
 	}
 
 	void WriteBatch::Delete(Slice^ key) {
+		if (key == nullptr) {
+			throw ref new InvalidArgumentException(L"key must not be null");
+		}
+
 		this->batch->Delete(key->ToLevelDBSlice());
 	}
 
