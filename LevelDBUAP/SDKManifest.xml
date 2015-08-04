@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<FileList
+    DisplayName="LevelDB for Windows Universal Application Platform"
+    ProductFamilyName="LevelDBUAP"
+    MoreInfo="https://github.com/maxpert/LevelDBWinRT"
+    MinVSVersion="14.0"
+    TargetPlatformMinVersion="10.0.0.0"
+    TargetPlatformVersion="10.0.0.0"
+    AppliesTo="WindowsAppContainer"
+    DependsOn="Microsoft.VCLibs, version=14.0"
+    SupportsMultipleVersions="Error"
+    SupportedArchitectures="x86;x64;ARM">
+  <File Reference="LevelDBWinRT.winmd" Implementation="LevelDBWinRT.dll"/>
+</FileList>
