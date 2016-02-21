@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="maxpert.LevelDBUAP" Version="0.9" Language="en-US" Publisher="Zohaib Sibte Hassan" />
-    <DisplayName>LevelDB for Universal Application Platform</DisplayName>
-    <Description xml:space="preserve">This is an unofficial port of LevelDB for Windows 10 UAP</Description>
+    <Identity Id="maxpert.LevelDBUAP" Version="1.0" Language="en-US" Publisher="Zohaib Sibte Hassan" />
+    <DisplayName>LevelDB for Universal Windows Platform</DisplayName>
+    <Description xml:space="preserve">This is an unofficial port of LevelDB for Windows 10 UWP</Description>
     <License>LICENSE.txt</License>
+    <Tags>leveldb,uwp</Tags>
   </Metadata>
   <Installation AllUsers="true" Scope="Global">
-    <InstallationTarget Id="Microsoft.ExtensionSDK" 
-                        TargetPlatformIdentifier="Windows" 
-                        TargetPlatformVersion="v10" 
-                        SdkName="LevelDBUAP" 
-                        SdkVersion="0.9" />
+    <InstallationTarget Id="Microsoft.ExtensionSDK"
+                        TargetPlatformIdentifier="Windows"
+                        TargetPlatformVersion="v10.0"
+                        SdkName="LevelDBUAP"
+                        SdkVersion="1.0" />
   </Installation>
   <Assets>
     <Asset Type="Microsoft.ExtensionSDK" Path="SDKManifest.xml" />
