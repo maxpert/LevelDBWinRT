@@ -1,9 +1,17 @@
 # LevelDB Windows Runtime Component
 
- This project aims to enable usage of LevelDB on Windows Phone 8.1+ and Windows 8.1+ platforms. This includes Windows 10 Universal Platform. LevelDB stores keys and values in arbitrary byte arrays, and data is sorted by key. It supports batching writes, forward and backward iteration, and compression of the data via Google's Snappy compression library.
+ This project aims to enable usage of LevelDB on Windows Phone 8.1+, Windows 8.1+ platforms, Windows 10 UWP. LevelDB stores keys and values in arbitrary byte arrays, and data is sorted by key. It supports batching writes, forward and backward iteration, and compression of the data via Google's Snappy compression library.
 
 LevelDB is a fast key-value storage library written at Google that provides an ordered mapping from string keys to string values.
 LevelDB Authors: Sanjay Ghemawat (sanjay@google.com) and Jeff Dean (jeff@google.com)
+
+# Is it production ready?
+
+ Yes! It is production ready.
+
+# Where to download?
+
+ You can download the extension from Visual Studio by going to Tools > Extensions/Updates or directly by going (here)[https://visualstudiogallery.msdn.microsoft.com/4466a14f-49d7-4440-91e0-dd82d29d683a]. 
 
 # Features
   * Keys and values can be arbitrary byte arrays (Slice.FromArray)
@@ -15,8 +23,8 @@ LevelDB Authors: Sanjay Ghemawat (sanjay@google.com) and Jeff Dean (jeff@google.
   * Iterator support, with forward and backward iteration.
   * Basic wrappers for WriteOptions, ReadOptions, Options.
   * Builtin compression support with Snappy.
-  * Custom comparator support.
-  * ARM or x86 architecture support.
+  * Custom comparator support (experimental).
+  * ARM, x86, and x64 architecture support.
 
 # Examples
 
@@ -112,8 +120,7 @@ __Once a database has been created with a specific comparator it must be always 
 
 # TODO:
 
-  * Use native Windows API instead of fstream to ensure better Flush and Sync.
   * Custom filter support.
   * Custom compressor support.
 
-This is an unoffical port of LevelDB for Windows Runtime (forked and modified from another Windows port that was only working on .NET https://leveldb.angeloflogic.com/downloads/).
+This is an unoffical port of LevelDB for Windows Runtime (forked and modified from another Windows port that was only working on .NET https://leveldb.angeloflogic.com/downloads/). 
