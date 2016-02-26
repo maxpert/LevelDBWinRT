@@ -118,8 +118,10 @@ Options options = new Options
 
 __Once a database has been created with a specific comparator it must be always opened with same comparator (Atleast name should match)__. Make sure your Compare method never throws an exception otherwise the behavior is undefined.
 
-# TODO:
+# Roadmap:
 
+  * More unit test cases.
+  * Basic ORM.
   * Custom filter support.
   * Custom compressor support.
 
