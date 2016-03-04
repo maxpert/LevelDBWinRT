@@ -1,6 +1,6 @@
 # LevelDB Windows Runtime Component
 
- This project aims to enable usage of LevelDB on Windows Phone 8.1+, Windows 8.1+ platforms, Windows 10 UWP. LevelDB stores keys and values in arbitrary byte arrays, and data is sorted by key. It supports batching writes, forward and backward iteration, and compression of the data via Google's Snappy compression library.
+ This project aims to enable usage of LevelDB on Windows 10 UWP (Windows Phone 8.1+, Windows 8.1+ platforms have been deprecated). LevelDB stores keys and values in arbitrary byte arrays, and data is sorted by key. It supports batching writes, forward and backward iteration, and compression of the data via Google's Snappy compression library.
 
 LevelDB is a fast key-value storage library written at Google that provides an ordered mapping from string keys to string values.
 LevelDB Authors: Sanjay Ghemawat (sanjay@google.com) and Jeff Dean (jeff@google.com)
