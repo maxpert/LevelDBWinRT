@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <metadata minClientVersion="2.8.6">
+    <id>LevelDB.UWP</id>
+    <version>1.0.7</version>
+    <title>LevelDB for UWP</title>
+    <authors>Zohaib Sibte Hassan</authors>
+    <owners>Zohaib Sibte Hassan</owners>
+    <licenseUrl>http://www.opensource.org/licenses/mit-license.php</licenseUrl>
+    <projectUrl>https://github.com/maxpert/LevelDBWinRT/</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description><![CDATA[ LevelDBUWP is a port of LevelDB (originally made by Google) for Universal Windows Platform (UWP). ]]></description>
+    <summary><![CDATA[ LevelDBUWP is a port of LevelDB (originally made by Google) for Universal Windows Platform (UWP). LevelDB stores keys and values in arbitrary byte arrays, and data is sorted by key. It supports batching writes, forward and backward iteration, and compression of the data via Google's Snappy compression library. ]]></summary>
+    <releaseNotes> 
+     - Ported over from extension to nuget
+     - Dropping support for Windows 8.1 and Windows Phone 8.1
+    </releaseNotes>
+    <copyright>Copyright 2016</copyright>
+    <tags>leveldb,uwp,nosql,leveldbuap,leveldbuwp,uap</tags>
+    <references>
+      <reference file="LevelDBWinRT.winmd" />
+    </references>
+  </metadata>
+</package>
