@@ -11,7 +11,7 @@ LevelDB Authors: Sanjay Ghemawat (sanjay@google.com) and Jeff Dean (jeff@google.
 
 # Where to download?
 
- You can download the extension from Visual Studio by going to Tools > Extensions/Updates or directly by going (here)[https://visualstudiogallery.msdn.microsoft.com/4466a14f-49d7-4440-91e0-dd82d29d683a]. 
+ You can download nuget package [here](https://www.nuget.org/packages/LevelDB.UWP/); or by installing nuget from VisualStudio.  
 
 # Features
   * Keys and values can be arbitrary byte arrays (Slice.FromArray)
