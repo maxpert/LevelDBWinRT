@@ -171,6 +171,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)snappy\snappy.cc">
       <Filter>snappy</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)db\c.cc" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)db\builder.h">
@@ -291,9 +292,6 @@
       <Filter>port</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)port\port_example.h">
-      <Filter>port</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)port\port_posix.h">
       <Filter>port</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)port\port_win.h">

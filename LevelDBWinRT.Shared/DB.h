@@ -17,8 +17,9 @@ namespace LevelDBWinRT {
 	public ref class DB sealed
 	{
 	private:
+    const leveldb::Comparator* comparator;
+
 		leveldb::DB* db;
-		leveldb::Comparator* comparator;
 		leveldb::Options openOptions;
 	public:
 		DB(Options^ options, String^ path);
@@ -31,7 +32,6 @@ namespace LevelDBWinRT {
 
 		Iterator^ NewIterator(ReadOptions ^readOptions);
 		Snapshot^ GetSnapshot();
-		void ReleaseSnapshot(Snapshot^ snapshot);
 	};
 }
 

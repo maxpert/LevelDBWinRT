@@ -48,6 +48,7 @@ namespace leveldb {
 
 		std::wstring s2ws(const std::string& str);
 		std::string ws2s(const std::wstring& wstr);
+    std::string os_env_temp_path();
 
 		static const union {
 			uint32_t i;
@@ -141,6 +142,10 @@ namespace leveldb {
 			return false;
 		}
 
+    typedef void* OnceType;
+    typedef void(*InitOnceCallbackFunction)();
+    #define LEVELDB_ONCE_INIT 0
+    extern void InitOnce(OnceType* once, void(*initializer)());
 	}
 }
 

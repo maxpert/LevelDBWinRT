@@ -369,9 +369,43 @@ namespace leveldb {
 				return result;
 			}
 
-			virtual void Schedule(void(*function)(void*), void* arg);
+      virtual void Schedule(void(*function)(void*), void* arg)
+      {
+        EnterCriticalSection(&cs);
 
-			virtual void StartThread(LPTHREAD_START_ROUTINE function, void* arg);
+        // Start background thread if necessary
+        if (bgthread_ == NULL) {
+          bgthread_ = CreateThread(NULL, 0, &PosixEnv::BGThreadWrapper, this, 0, NULL);
+        }
+
+        // Add to priority queue
+        queue_.push_back(BGItem());
+        queue_.back().function = function;
+        queue_.back().arg = arg;
+
+        LeaveCriticalSection(&cs);
+
+        WakeConditionVariable(&cv);
+      }
+
+      virtual void StartThread(void(*function)(void* arg), void* arg)
+      {
+        CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)function, arg, 0, NULL);
+      }
+
+      virtual Status GetTestDirectory(std::string* path)
+      {
+        try
+        {
+          *path = leveldb::port::os_env_temp_path();
+        }
+        catch (...)
+        {
+          return Status::IOError("Unable to get temp folder");
+        }
+
+        return Status::OK();
+      }
 
 #ifndef WIN32
 			static uint64_t gettid() {
@@ -444,25 +478,6 @@ namespace leveldb {
 			bgthread_ = NULL;
 		}
 
-		void PosixEnv::Schedule(void(*function)(void*), void* arg) {
-			EnterCriticalSection(&cs);
-
-			// Start background thread if necessary
-			if (bgthread_ == NULL) {
-				bgthread_ = CreateThread(NULL, 0, &PosixEnv::BGThreadWrapper, this, 0, NULL);
-			}
-
-			// Add to priority queue
-			queue_.push_back(BGItem());
-			queue_.back().function = function;
-			queue_.back().arg = arg;
-
-			LeaveCriticalSection(&cs);
-
-			WakeConditionVariable(&cv);
-
-		}
-
 		void PosixEnv::BGThread() {
 			while (true) {
 				// Wait until there is an item that is ready to run
@@ -479,10 +494,6 @@ namespace leveldb {
 				LeaveCriticalSection(&cs);
 				(*function)(arg);
 			}
-		}
-
-		void PosixEnv::StartThread(LPTHREAD_START_ROUTINE function, void* arg) {
-			CreateThread(NULL, 0, function, arg, 0, NULL);
 		}
 
 	}

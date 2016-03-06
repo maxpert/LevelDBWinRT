@@ -34,11 +34,22 @@ namespace LevelDBWinRT {
 		return ret;
 	}
 
-	Array<uint8>^ Slice::ToByteArray() {
-		return this->buffer;
+  Array<uint8>^ Slice::ToByteArray() {
+    return this->ToByteArray(false);
 	}
 
-	String^ Slice::AsString() {
+	Array<uint8>^ Slice::ToByteArray(bool deepCopy) {
+    if (!deepCopy)
+    {
+      return this->buffer;
+    }
+
+    Array<uint8>^ c = ref new Array<uint8>(this->buffer->Length);
+    memcpy_s(c->Data, c->Length, this->buffer->Data, c->Length);
+		return c;
+	}
+
+	String^ Slice::ToString() {
 		Array<wchar_t>^ c = ref new Array<wchar_t>(this->buffer->Length);
 		memcpy_s(c->Data, c->Length, this->buffer->Data, c->Length);
 		return ref new String(c->Data);

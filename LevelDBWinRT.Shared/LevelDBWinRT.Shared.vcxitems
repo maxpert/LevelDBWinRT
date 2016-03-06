@@ -19,6 +19,7 @@
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)DB.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)db\builder.cc" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)db\c.cc" />
     <ClCompile Include="$(MSBuildThisFileDirectory)db\dbformat.cc" />
     <ClCompile Include="$(MSBuildThisFileDirectory)db\db_impl.cc" />
     <ClCompile Include="$(MSBuildThisFileDirectory)db\db_iter.cc" />
@@ -104,7 +105,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)port\atomic_pointer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)port\port.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)port\port_example.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)port\port_posix.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)port\port_win.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)port\thread_annotations.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)port\win\stdint.h" />
