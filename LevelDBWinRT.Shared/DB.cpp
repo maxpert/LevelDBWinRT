@@ -92,6 +92,11 @@ namespace LevelDBWinRT {
 			delete this->comparator;
 			this->comparator = NULL;
 		}
+
+    if (this->openOptions.block_cache != NULL) {
+      delete this->openOptions.block_cache;
+      this->openOptions.block_cache = NULL;
+    }
 	}
 
 	bool DB::Put(WriteOptions^ writeOptions, Slice^ key, Slice^ value) {

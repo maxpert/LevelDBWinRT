@@ -60,6 +60,41 @@ namespace LevelDBWinRT.Tests
         }
 
         [TestMethod]
+        public void TestIteratorWithSnapshot()
+        {
+            using (var db = new DB(new Options { CreateIfMissing = true }, "test2.db"))
+            {
+                using (var batch = new WriteBatch())
+                {
+                    for (int i = 0; i < 100; i++)
+                    {
+                        batch.Put(Slice.FromString($"key::{i,20:D20}"), Slice.FromString($"{i,32}"));
+                    }
+
+                    db.Write(new WriteOptions { Sync = true }, batch);
+                }
+
+                using (var snapshot = db.GetSnapshot())
+                using (var batch = new WriteBatch())
+                using (var itr = db.NewIterator(new ReadOptions { Snapshot = snapshot }))
+                {
+                    itr.Seek(Slice.FromString("key::"));
+                    Assert.IsTrue(itr.Valid());
+                    int entriesDeleted = 0;
+                    while (itr.Valid())
+                    {
+                        batch.Delete(itr.Key());
+                        itr.Next();
+                        entriesDeleted++;
+                    }
+
+                    db.Write(new WriteOptions(), batch);
+                    Assert.AreEqual(100, entriesDeleted);
+                }
+            }
+        }
+
+        [TestMethod]
         public void TestDeleteEntryFromDatabase()
         {
             using (var db = new DB(new Options { CreateIfMissing = true }, "test1.db"))
