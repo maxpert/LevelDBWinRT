@@ -16,7 +16,6 @@ LevelDB Authors: Sanjay Ghemawat (sanjay@google.com) and Jeff Dean (jeff@google.
 # Features
   * Keys and values can be arbitrary byte arrays (Slice.FromArray)
   * Data is stored and sorted by key.
-  * Callers can provide custom comparison function to override the sort order (Not implemented yet).
   * Basic Get(key)/Put(key, value)/Delete(key) support.
   * Atomic batch operations can make multiple changes.
   * Users can create transient snapshot to get a consistent view of data.
