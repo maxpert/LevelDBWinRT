@@ -2,7 +2,7 @@
 <package>
   <metadata minClientVersion="2.8.6">
     <id>LevelDB.UWP</id>
-    <version>1.18.0-beta</version>
+    <version>1.18.0</version>
     <title>LevelDB for UWP</title>
     <authors>Zohaib Sibte Hassan</authors>
     <owners>Zohaib Sibte Hassan</owners>
