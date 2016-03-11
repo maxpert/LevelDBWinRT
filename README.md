@@ -120,8 +120,7 @@ __Once a database has been created with a specific comparator it must be always 
 # Roadmap:
 
   * More unit test cases.
-  * Basic ORM.
   * Custom filter support.
   * Custom compressor support.
 
-This is an unoffical port of LevelDB for Windows Runtime (forked and modified from another Windows port that was only working on .NET https://leveldb.angeloflogic.com/downloads/). 
+This is an unoffical port of LevelDB for Windows Runtime. 
