@@ -11,7 +11,7 @@ LevelDB Authors: Sanjay Ghemawat (sanjay@google.com) and Jeff Dean (jeff@google.
 
 # Where to download?
 
- You can install it as a nuget package from VisualStudio. It's available [here](https://www.nuget.org/packages/LevelDB.UWP/1.0.7) as well.
+### [Download](https://www.nuget.org/packages/LevelDB.UWP/1.0.8) Nuget
 
 # Features
   * Keys and values can be arbitrary byte arrays (Slice.FromArray)
