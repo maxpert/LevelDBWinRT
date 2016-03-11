@@ -127,7 +127,13 @@ class Env {
 
   // Start a new thread, invoking "function(arg)" within the new thread.
   // When "function(arg)" returns, the thread will be destroyed.
-  virtual void StartThread(unsigned long(_stdcall*function) (void* arg), void* arg) = 0;
+  virtual void StartThread(void (*function)(void* arg), void* arg) = 0;
+
+  // *path is set to a temporary directory that can be used for testing. It may
+  // or many not have just been created. The directory may or may not differ
+  // between runs of the same process, but subsequent calls will return the
+  // same directory.
+  virtual Status GetTestDirectory(std::string* path) = 0;
 
   // Create and return a log file for storing informational messages.
   virtual Status NewLogger(const std::string& fname, Logger** result) = 0;
@@ -303,8 +309,11 @@ class EnvWrapper : public Env {
   void Schedule(void (*f)(void*), void* a) {
     return target_->Schedule(f, a);
   }
-  void StartThread(unsigned long(_stdcall*f)(void*), void* a) {
+  void StartThread(void (*f)(void*), void* a) {
     return target_->StartThread(f, a);
+  }
+  virtual Status GetTestDirectory(std::string* path) {
+    return target_->GetTestDirectory(path);
   }
   virtual Status NewLogger(const std::string& fname, Logger** result) {
     return target_->NewLogger(fname, result);

@@ -23,8 +23,9 @@ namespace LevelDBWinRT {
 
 	public:
 		Slice(Slice^ obj);
-		Array<uint8>^ ToByteArray();
-		String^ AsString();
+		Array<uint8>^ ToByteArray(bool deepCopy);
+    Array<uint8>^ ToByteArray();
+		virtual String^ ToString() override;
 
 		static Slice^ FromString(String^ s);
 		static Slice^ FromByteArray(const Array<uint8>^ b);

@@ -61,8 +61,7 @@ namespace LevelDBWinRT {
 
 		if (options->Comparator != nullptr) {
 			this->openOptions.comparator = this->comparator = new LevelDBComparatorWrapper(options->Comparator);
-		}
-		else {
+		} else {
 			this->comparator = NULL;
 		}
 		
@@ -94,8 +93,7 @@ namespace LevelDBWinRT {
 			this->comparator = NULL;
 		}
 
-    if (this->openOptions.block_cache != NULL)
-    {
+    if (this->openOptions.block_cache != NULL) {
       delete this->openOptions.block_cache;
       this->openOptions.block_cache = NULL;
     }
@@ -132,7 +130,6 @@ namespace LevelDBWinRT {
 
 		if (readOptions == nullptr) {
 			readOptions = ref new ReadOptions();
-			readOptions->FillCache = true;
 		}
 
 		leveldb::Iterator* itr = this->db->NewIterator(readOptions->ToLevelDBOptions());
@@ -161,7 +158,6 @@ namespace LevelDBWinRT {
 	Iterator^ DB::NewIterator(ReadOptions^ opts) {
 		if (opts == nullptr) {
 			opts = ref new ReadOptions();
-			opts->FillCache = true;
 		}
 
 		return ref new Iterator(
@@ -170,17 +166,7 @@ namespace LevelDBWinRT {
 	}
 
 	Snapshot^ DB::GetSnapshot() {
-		return ref new Snapshot(
-			this->db->GetSnapshot()
-		);
-	}
-
-	void DB::ReleaseSnapshot(Snapshot^ s) {
-		if (s == nullptr) {
-			throw ref new InvalidArgumentException(L"Can't release null snapshot");
-		}
-
-		this->db->ReleaseSnapshot(s->snapshot);
+		return ref new Snapshot(this->db);
 	}
 
 	bool DB::Write(WriteOptions^ writeOptions, WriteBatch^ batch) {

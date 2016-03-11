@@ -95,18 +95,34 @@ namespace LevelDBWinRT {
 			this->BlockRestartInterval = 16;
 			
 			this->Filter = FilterType::None;
-			this->Compressor = CompressorType::None;
+			this->Compressor = CompressorType::Snappy;
 
 			this->Comparator = nullptr;
 		}
 	};
 
 	public ref class Snapshot sealed {
+  private:
+    leveldb::DB *database;
+
 	internal:
 		const leveldb::Snapshot *snapshot;
-		Snapshot(const leveldb::Snapshot *s) {
-			this->snapshot = s;
+
+		Snapshot(leveldb::DB *db) {
+      this->database = db;
+			this->snapshot = this->database->GetSnapshot();
 		}
+
+  public:
+    virtual ~Snapshot() {
+      if (this->database == NULL)
+      {
+        return;
+      }
+
+      this->database->ReleaseSnapshot(this->snapshot);
+      this->database = NULL;
+    }
 	};
 
 	public ref class WriteOptions sealed {
@@ -119,7 +135,7 @@ namespace LevelDBWinRT {
 	public:
 		property bool Sync;
 
-		WriteOptions(void) {
+		WriteOptions() {
 			this->Sync = false;
 		}
 	};
@@ -130,7 +146,11 @@ namespace LevelDBWinRT {
 			leveldb::ReadOptions opts;
 			opts.fill_cache = this->FillCache;
 			opts.verify_checksums = this->VerifyChecksums;
-			opts.snapshot = this->Snapshot->snapshot;
+      if (this->Snapshot != nullptr)
+      {
+        opts.snapshot = this->Snapshot->snapshot;
+      }
+			
 			return opts;
 		}
 	public:
@@ -141,7 +161,7 @@ namespace LevelDBWinRT {
 		ReadOptions() {
 			this->VerifyChecksums = false;
 			this->FillCache = true;
-			this->Snapshot = ref new LevelDBWinRT::Snapshot(NULL);
+			this->Snapshot = nullptr;
 		}
 	};
 }

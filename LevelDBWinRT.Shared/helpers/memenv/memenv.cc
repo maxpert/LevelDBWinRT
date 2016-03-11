@@ -359,6 +359,11 @@ class InMemoryEnv : public EnvWrapper {
     return Status::OK();
   }
 
+  virtual Status GetTestDirectory(std::string* path) {
+    *path = "/test";
+    return Status::OK();
+  }
+
   virtual Status NewLogger(const std::string& fname, Logger** result) {
     *result = new NoOpLogger;
     return Status::OK();

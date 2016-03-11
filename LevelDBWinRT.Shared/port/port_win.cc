@@ -35,6 +35,19 @@
 
 namespace leveldb {
 	namespace port {
+    
+    BOOL CALLBACK InvokeInitOnceFunction(PINIT_ONCE InitOnce, PVOID param, PVOID *lpContext)
+    {
+      InitOnceCallbackFunction func = (InitOnceCallbackFunction)param;
+      func();
+      return TRUE;
+    }
+
+    INIT_ONCE g_InitOnce = INIT_ONCE_STATIC_INIT;
+    void InitOnce(OnceType* once, void(*initializer)())
+    {
+      InitOnceExecuteOnce(&g_InitOnce, InvokeInitOnceFunction, initializer, NULL);
+    }
 
 		std::wstring s2ws(const std::string& str)
 		{
@@ -51,6 +64,12 @@ namespace leveldb {
 
 			return converterX.to_bytes(wstr);
 		}
+
+    std::string os_env_temp_path()
+    {
+      Windows::Storage::ApplicationData^ currentAppData = Windows::Storage::ApplicationData::Current;
+      return leveldb::port::ws2s(currentAppData->TemporaryFolder->Path->Data());
+    }
 
 		Mutex::Mutex() :
 			cs_(nullptr) {
@@ -156,6 +175,5 @@ namespace leveldb {
 		void AtomicPointer::NoBarrier_Store(void* v) {
 			rep_ = v;
 		}
-
 	}
 }
