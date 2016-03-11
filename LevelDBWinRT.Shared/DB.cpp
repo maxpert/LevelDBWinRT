@@ -56,6 +56,26 @@ namespace LevelDBWinRT {
 		}
 	};
 
+  bool DB::Repair(Options ^options, String ^path)
+  {
+    auto openOptions = options->ToLevelDBOptions();
+    if (options->Comparator != nullptr) {
+      openOptions.comparator = new LevelDBComparatorWrapper(options->Comparator);
+    }
+
+    // Make sure the path provided is absolute path like C:\ or D:\ otherwise 
+    // append the localfolder path as prefix to whatever is passed in path
+    std::wstring wpath(path->Data());
+    if (wpath.find(L":\\") != 1) {
+      ApplicationData^ currentAppData = ApplicationData::Current;
+      path = ref new String(currentAppData->LocalFolder->Path->Data());
+      path = String::Concat(path, L"\\");
+      path = String::Concat(path, ref new String(wpath.c_str()));
+    }
+
+    return leveldb::RepairDB(Utils::FromPlatformString(path), openOptions).ok();
+  }
+
 	DB::DB(Options^ options, String^ path) {
 		this->openOptions = options->ToLevelDBOptions();
 

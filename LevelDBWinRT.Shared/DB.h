@@ -22,6 +22,8 @@ namespace LevelDBWinRT {
 		leveldb::DB* db;
 		leveldb::Options openOptions;
 	public:
+    static bool Repair(Options ^options, String ^path);
+
 		DB(Options^ options, String^ path);
 		virtual ~DB();
 
