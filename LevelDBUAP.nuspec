@@ -2,7 +2,7 @@
 <package>
   <metadata minClientVersion="2.8.6">
     <id>LevelDB.UWP</id>
-    <version>1.18.1</version>
+    <version>1.18.2</version>
     <title>LevelDB for UWP</title>
     <authors>Zohaib Sibte Hassan</authors>
     <owners>Zohaib Sibte Hassan</owners>
@@ -15,7 +15,7 @@
 - Adding DB.Recover to recover broken databases
     </releaseNotes>
     <copyright>Copyright 2016</copyright>
-    <tags>leveldb,uwp,nosql,leveldbuap,leveldbuwp,uap</tags>
+    <tags>leveldb,uwp,nosql,leveldbuap,leveldbuwp,uap,database,keyvalue,key-value,store,</tags>
     <references>
       <reference file="LevelDBWinRT.winmd" />
     </references>
