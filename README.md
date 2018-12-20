@@ -8,6 +8,10 @@ LevelDB Authors: Sanjay Ghemawat (sanjay@google.com) and Jeff Dean (jeff@google.
 # Is it production ready?
 
  Yes! It is production ready.
+ 
+# Project status 
+
+ > The original goal of this project was to port LevelDB to UWP platform. Project has been stablized and is being used by various applications and projects for past few years now. With dismissal of UWP from phones and lesser tracktion I've decided to code-freeze the project. Any security patches or fixes that won't change the API are welcome, but no major updates will be released. With my limited time I try my best to people opening issues or send out emails.
 
 # Where to download?
 
@@ -120,10 +124,3 @@ __Once a database has been created with a specific comparator it must be always 
 # Documentation
 
  Checkout project wiki for extended and detailed documentation
-
-# Roadmap:
-
-  * Custom filter support.
-  * Custom compressor support.
-
-This is an unoffical port of LevelDB for Windows Runtime. 
